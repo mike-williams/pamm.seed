@@ -46,64 +46,8 @@ CREATE TABLE project_user (
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
-CREATE TABLE meeting (
-  id             BIGINT(20)   NOT NULL AUTO_INCREMENT,
-  subject        VARCHAR(255) NOT NULL,
-  summary        VARCHAR(255) NOT NULL,
-  scheduled_date DATETIME     NOT NULL,
-  review_by_date DATETIME,
-  project_id     BIGINT(20)   NOT NULL,
-  owner_user_id  BIGINT(20)   NOT NULL,
-  status         VARCHAR(20),
-  PRIMARY KEY (id),
-  FOREIGN KEY (owner_user_id) REFERENCES user (id),
-  FOREIGN KEY (project_id) REFERENCES project (id)
-);
-
-CREATE TABLE meeting_user (
-  id         BIGINT(20)   NOT NULL AUTO_INCREMENT,
-  meeting_id BIGINT(20),
-  user_email VARCHAR(255) NOT NULL,
-  user_id    BIGINT(20),
-  forename   VARCHAR(50),
-  surname    VARCHAR(50),
-  role       VARCHAR(20),
-  PRIMARY KEY (id),
-  FOREIGN KEY (meeting_id) REFERENCES meeting (id),
-  FOREIGN KEY (user_id) REFERENCES user (id)
-);
-
-CREATE TABLE comment (
-  id                BIGINT(20)    NOT NULL AUTO_INCREMENT,
-  reference         VARCHAR(30),
-  text              VARCHAR(1024) NOT NULL,
-  entry_date        DATETIME      NOT NULL DEFAULT SYSDATE(),
-  meeting_id        BIGINT(20)    NOT NULL,
-  parent_comment_id BIGINT(20),
-  meeting_user_id   BIGINT(20)    NOT NULL,
-
-  PRIMARY KEY (id),
-  FOREIGN KEY (meeting_user_id) REFERENCES meeting_user (id),
-  FOREIGN KEY (meeting_id) REFERENCES meeting (id)
-);
-
-CREATE TABLE issue (
-  id         BIGINT(20)    NOT NULL AUTO_INCREMENT,
-  text       VARCHAR(1024) NOT NULL,
-  entry_date DATETIME      NOT NULL DEFAULT SYSDATE(),
-  user_id    BIGINT(20)    NOT NULL,
-  status     VARCHAR(20)   NOT NULL,
-
-  PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES project_user (user_id)
-);
-
 # --- !Downs
 
-DROP TABLE comment;
-DROP TABLE meeting_user;
-DROP TABLE meeting;
-DROP TABLE issue;
 DROP TABLE project_user;
 DROP TABLE project;
 DROP TABLE user;
