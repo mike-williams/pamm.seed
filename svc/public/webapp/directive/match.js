@@ -1,36 +1,23 @@
 "use strict";
-(function () {
-    /**
-     * TODO needs comment
-     */
-    angular.module('app')
-        .directive('match', [Match]);
 
-    function Match () {
-        return {
-            require: 'ngModel',
-            link: function (scope, elem, attrs, ngModel) {
+/**
+ * Directive that checks one input field with another input field. Returns valid if they match. Directive is run when either field is changed
+ */
+angular.module("pamm").directive("match", function () {
+    return {
+        require: "ngModel",
+        scope: { otherModelValue: "=match" },
+        link: function (scope, element, attributes, ngModel) {
 
-                ngModel.$parsers.unshift(validate);
+            // set the match validator for the given model that we annotated with match
+            ngModel.$validators.match = function (modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
 
-                //Watch the main ngModel to be matched against so that validate is called when it is changed too
-                scope.$watch(attrs.match, function () {
-                    validate(ngModel.$viewValue);
-                });
-
-                /**
-                 *
-                 * @param value
-                 * @returns {*}
-                 */
-                function validate(value) {
-                    var isValid = scope.$eval(attrs.match) == value;
-
-                    ngModel.$setValidity('match', isValid);
-
-                    return isValid ? value : undefined;
-                }
-            }
-        };
+            //Watch the main ngModel to be matched against so that validate is called when it is changed too
+            scope.$watch("otherModelValue", function () {
+                ngModel.$validate();
+            });
+        }
     };
-}());
+});

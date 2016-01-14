@@ -1,23 +1,23 @@
-"use strict";
-(function () {
+angular.module("pamm", ["ui.router", "googlechart", "ui.bootstrap", "ngAnimate", "ngMessages"]).run(
+    function ($window, $rootScope, $log) {
+        $log.debug("App Instantiated");
+    }).config(
+    function ($urlRouterProvider, $locationProvider) {
+        var $log = angular.injector(["ng"]).get("$log");
+        $urlRouterProvider.otherwise("user/login");
+        $locationProvider.html5Mode(true);
 
-    var app = angular.module("app", ["ui.router", "dal", "securityManager", "repository"]).run(
-        function ($window, $rootScope, $log) {
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                // override navigation here (e.g. prevent back button
-                // Add security check here if necessary
-            });
-
-            // store constants in root scope so that child compoents can access it
-            $rootScope.$$errorText = $$errorText;
-            $rootScope.$$dataType = $$dataType;
-
-            $log.debug("App Instantiated");
-        });
-
-    //pushes token onto each http request header
-    app.config(function ($httpProvider) {
-        $httpProvider.interceptors.push('authInterceptor');
+        $log.debug("Configured HTML5 routing");
+    }).provider("runtimeStates",
+    function runtimeStates($stateProvider) {
+        var $log = angular.injector(["ng"]).get("$log");
+        this.$get = function () {
+            return {
+                addState: function (name, state) {
+                    $stateProvider.state(name, state);
+                }
+            }
+        };
+        $log.debug("Configured RuntimeStates Provider");
     });
 
-}());

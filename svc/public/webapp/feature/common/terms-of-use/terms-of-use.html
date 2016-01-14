@@ -1,0 +1,11 @@
+<main data-ng-controller="termsOfUseCtrl">
+  <div class="container">
+    <div class="content col-md-offset-1 col-md-10 clearfix">
+      <div class="logo"><span class="sr-only">Logo</span></div>
+      <h1>{{termsAndConditionsHeading}}</h1>
+
+      <p data ng-repeat="termsAndConditions in termsAndConditionsBody">{{termsAndConditions}}</p>
+      <button type="button" class="btn btn-primary pull-right" data-ng-click="back()">Back</button>
+    </div>
+  </div>
+</main>

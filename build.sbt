@@ -1,14 +1,30 @@
 import Lib._
 
 lazy val root = (project in file("."))
-  .aggregate(svc, int)
+  .aggregate(testsetup, svc, int)
+  .settings(libraryDependencies ++= Seq(
+    jdbc
+  ))
+
 
 lazy val svc = (project in file("svc"))
-  .enablePlugins(PlayJava, PlayEbean)
+  .enablePlugins(PlayJava)
+  .settings(clientTest:= clientTestTask)
+  .settings(endToEndTest:= endToEndTestTask)
+  .settings(startPAMM:= startPAMMTask)
+  .settings(stopPAMM:= stopPAMMTask)
+  .settings(Keys.test:= customTestTask.value)
   .settings(Settings.basicSettings: _*)
   .settings(Settings.serviceSettings: _*)
   .settings(libraryDependencies ++= Seq(
-    javaJdbc, cache, javaWs
+    javaJpa,
+    hibernate,
+    cache,
+    javaWs,
+    evolutions,
+    jdbc,
+    "com.typesafe.play" %% "play-mailer" % "3.0.1",
+    "io.jsonwebtoken" % "jjwt" % "0.6.0"
   ) ++ Lib.test(
     junit
   ))
@@ -21,6 +37,18 @@ lazy val int = (project in file("int"))
     cucumberGuice, cucumberJUnit, dbunit, mysqlconn, junit, logback
   ))
 
-ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
+lazy val testsetup = (project in file("testsetup"))
+  .enablePlugins(PlayJava)
+  .settings(Settings.basicSettings: _*)
+  .settings(Settings.serviceSettings: _*)
+  .settings(libraryDependencies ++= Seq(
+    javaJpa, hibernate, cache, javaWs, evolutions, h2, selenium
+  ) ++ Lib.test(
+    junit
+  ))
 
+ivyScala := ivyScala.value map {
+  _.copy(overrideScalaVersion = true)
+}
 
+fork in run := true

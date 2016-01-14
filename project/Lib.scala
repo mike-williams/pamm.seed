@@ -7,7 +7,7 @@ object Lib {
 
   val repos = Seq(
     "Central Maven Repository" at "https://repo1.maven.org/maven2",
-    "Local Maven Repository" at "file://" + Path.userHome.absolutePath + "/.m2/repository",
+    "Local Maven Repository" at Path.userHome.asFile.toURI.toURL + ".m2/repository",
     "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases/"
   )
 
@@ -24,4 +24,10 @@ object Lib {
   val guice         = "com.google.inject"           %   "guice"                   % Version.GUICE
   val jaxrs         = "org.jboss.resteasy"          %   "resteasy-jaxrs"          % Version.JAXRS
   val jaxrsClient   = "org.jboss.resteasy"          %   "resteasy-client"         % Version.JAXRS
+  val javaee        = "javax"                       %   "javaee-api"              % Version.JAVAEE
+  val hibernate     = "org.hibernate"               %   "hibernate-entitymanager" % Version.HIBERNATE
+  val h2            = "com.h2database"              %   "h2"                      % Version.H2
+  val selenium      = "org.seleniumhq.selenium"     %   "selenium-server"         % Version.SELENIUM
+
+
 }

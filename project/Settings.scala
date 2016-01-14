@@ -1,3 +1,4 @@
+import play.sbt.PlayImport.PlayKeys
 import play.sbt.routes.RoutesKeys._
 import sbt.Keys._
 import sbt._
@@ -30,6 +31,9 @@ object Settings {
   lazy val serviceSettings = Seq(
     // Play provides two styles of routers, one expects its actions to be injected, the
     // other, legacy style, accesses its actions statically.
-    routesGenerator := InjectedRoutesGenerator
+    routesGenerator := InjectedRoutesGenerator,
+    javaSource in Test := baseDirectory.value  / "test" / "java" / "unit",
+    resourceDirectory in Test := baseDirectory.value / "test" / "java" / "resources"
+    //PlayKeys.externalizeResources := false
   )
 }

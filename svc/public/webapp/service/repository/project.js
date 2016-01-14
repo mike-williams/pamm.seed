@@ -1,79 +1,72 @@
 "use strict";
 
-(function () {
-    /**
-     * Project Repository
-     */
-    angular.module("repository")
-        .decorator("repository",
-        ["$delegate", "$q", "$log", "dal", ProjectRepo]);
-
-    function ProjectRepo($delegate, $q, $log, dal) {
-
+angular.module("pamm").service("projectRepository", ["$q", "$log", "dal",  "$rootScope", "contextEvent", "userContext", "projectDao",
+    function ($q, $log, dal, $rootScope, contextEvent, userContext, projectDao) {
         var projectCache = [];
-        console.log("This is project cache");
-        /**
-         *
-         * @param criteria
-         * @returns {*}
-         */
-        $delegate.getProject = function (criteria) {
-            $log.debug("Repository:Project getProject");
 
-            var deferred = $q.defer();
-            dal.getProject(criteria).then(function (results) {
+        (function init() {
+            $rootScope.$on(contextEvent.CLEAR_CONTEXT, function clearContext() {
+                projectCache = {};
+                $log.debug("projectRepository: context cleared");
+            })
+        })();
 
-                // This is a data change - broadcast events here if your application requires components communication
-                projectCache = results;
-                deferred.resolve(results);
-            }, function (error) {
-                deferred.reject(error);
+        this.getProjectById = function (projectId) {
+            return _.find(projectCache, function (project) {
+                return project.id == projectId;
             });
-
-            return deferred.promise;
         };
 
-        /**
-         * Create or update requirement.  A requirement with no ID is new.
-         * @returns {{}}
-         */
-        $delegate.saveProject = function (projectToSave) {
-            $log.debug("Repository:Project - saveProject");
-
+        this.getUserProjects = function (userId) {
             var deferred = $q.defer();
-            var isUpdate = projectToSave.hasOwnProperty("id");
 
+            if (userId == undefined || userId == null) {
+                var user = userContext.getUser();
+                userId = user.id;
+            }
 
-            $log.debug("isUpdate = " + isUpdate);
-            $log.debug(JSON.stringify(projectToSave));
-
-            dal.saveProject(projectToSave).then(function (project) {
-                // Add newly created project to cache
-                if (!isUpdate) {
-                    projectCache.push(project);
-                }
-                deferred.resolve(project);
-            }, function (error) {
-                deferred.reject(error);
-            });
-
-            return deferred.promise;
-        };
-
-        /**
-         * Delete the given project
-         * @param projectToDelete
-         * @returns {*}
-         */
-        $delegate.deleteProject = function (projectToDelete) {
-            $log.debug("Repository:Project - deleteProject");
-
-            var deferred = $q.defer();
-            dal.deleteProject(projectToDelete).then(function (projects) {
-                _.remove(projectCache, {
-                    id: projectToDelete.id
+            if (projectCache.length == 0) {
+                projectDao.getUserProjects(userId).then(function (results) {
+                    projectCache = results;
+                    deferred.resolve(results);
+                }, function (error) {
+                    deferred.reject(error);
                 });
+            } else {
+                deferred.resolve(projectCache);
+            }
+            return deferred.promise;
+        };
 
+        this.saveProject = function (projectToSave) {
+            var deferred = $q.defer();
+
+            if (projectToSave.hasOwnProperty("id")) {
+                projectDao.updateProject(projectToSave).then(function () {
+                    _.remove(projectCache, function (project) {
+                        return project.id == projectToSave.id;
+                    });
+                    projectCache.push(projectToSave);
+                    deferred.resolve(projectToSave);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+            } else {
+                projectDao.saveProject(projectToSave).then(function (savedProject) {
+                    projectCache.push(savedProject);
+                    deferred.resolve(savedProject);
+                }, function (error) {
+                    deferred.reject(error);
+                });
+            }
+            return deferred.promise;
+        };
+
+        this.deleteProject = function (projectToDelete) {
+            var deferred = $q.defer();
+
+            projectDao.deleteProject(projectToDelete).then(function () {
+                _.remove(projectCache, {id: projectToDelete.id});
                 deferred.resolve(projectCache);
             }, function (error) {
                 deferred.reject(error);
@@ -81,8 +74,4 @@
 
             return deferred.promise;
         };
-
-        $log.debug("Repository:Project Instantiated");
-        return $delegate;
-    }
-}());
+    }]);

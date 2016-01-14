@@ -1,66 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="app">
+<html lang="en" data-ng-app="pamm">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ATOS PAMM-UI Seed</title>
-  <link rel="icon" href="resource/favicon.ico">
+  <base href="/">
+
+  <title>pamm</title>
+  <link rel="icon" href="resource/image/pamm-logo.png">
 
   <!-- Libraries -->
   <script src="lib/lodash/lodash.min.js"></script>
-  <script src="lib/jquery/jquery-2.1.4.min.js"></script>
-  <script src="lib/angular-1.4.4/angular.min.js"></script>
-  <script src="lib/ui-router/angular-ui-router.js"></script>
-  <script src="lib/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
-  <link href="lib/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-messages.min.js"></script>
+  <script src="lib/angular/angular-animate.min.js"></script>
+  <script src="lib/angular-ui/angular-ui-router.min.js"></script>
+  <script src="lib/angular-ui/ui-bootstrap-tpls.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <script src="lib/bootstrap3-dialog/js/bootstrap-dialog.min.js"></script>
   <link href="lib/bootstrap3-dialog/css/bootstrap-dialog.min.css" rel="stylesheet">
+  <script src="lib/angular-google-chart/ng-google-chart.min.js"></script>
 
   <!--Base styling-->
-  <link rel="stylesheet/less" href="resource/base.less" type="text/css"/>
+  <link rel="stylesheet/less" href="resource/app.less"/>
+  <link rel="stylesheet/less" href="resource/animate.less"/>
+  <link rel="stylesheet/less" href="resource/breadcrumb.less"/>
+  <link rel="stylesheet/less" href="resource/ui.less"/>
 
-  <!--Constants-->
-  <script src="constant/component-state.js"></script>
+  <!--Constants and ref data-->
   <script src="constant/data-type.js"></script>
-  <script src="constant/error-message.js"></script>
-  <script src="constant/event.js"></script>
+  <script src="constant/http.js"></script>
+  <script src="constant/refdata/refdata.js"></script>
 
-  <!--Application-->
+  <!--Application - must be loaded before dependencies -->
   <script src="app.js"></script>
-  <script src="app-controller.js"></script>
-  <script src="app-state-manager.js"></script>
+  <script src="utils/dialog.js"></script>
 
   <!--Directives-->
   <script src="directive/match.js"></script>
+  <script src="directive/lowercase.js"></script>
+  <script src="directive/autofocus.js"></script>
 
   <!--Services-->
-  <script src="service/security/security-manager.js"></script>
-  <script src="service/security/auth-interceptor.js"></script>
   <script src="service/dal/dal.js"></script>
   <script src="service/dal/project.js"></script>
-  <script src="service/repository/repository.js"></script>
+  <script src="service/dal/user.js"></script>
+
   <script src="service/repository/project.js"></script>
 
-  <!--Features-->
-  <script src="feature/login/login-controller.js"></script>
-  <link rel="stylesheet/less" href="feature/login/login.less" type="text/css"/>
+  <script src="service/context/context-event.js"></script>
+  <script src="service/context/usercontext.js"></script>
 
-  <script src="feature/home/home-controller.js"></script>
-  <link rel="stylesheet/less" href="feature/home/home.less" type="text/css"/>
+  <script src="service/security/bearer-token/auth-service.js"></script>
+  <script src="service/security/bearer-token/auth-interceptor.js"></script>
 
-  <script src="feature/dashboard/dashboard-controller.js"></script>
-  <link rel="stylesheet/less" href="feature/dashboard/dashboard.less" type="text/css"/>
+  <!--Components-->
+  <script src="component/favourite-panel/favourite-panel.js"></script>
+  <link rel="stylesheet/less" href="component/favourite-panel/favourite-panel.less"/>
 
-  <script src="feature/project/project-controller.js"></script>
-  <script src="feature/project/project-item-controller.js"></script>
-  <script src="feature/project/project-form-controller.js"></script>
-  <link rel="stylesheet/less" href="feature/project/project.less" type="text/css"/>
+  <!--common-->
+  <script src="feature/common/terms-of-use/terms-of-use-ctrl.js"></script>
+  <link rel="stylesheet/less" href="feature/common/terms-of-use/terms-of-use.less"/>
+  <script src="feature/common/error/error-state.js"></script>
 
-  <!--LESS pre-processor - needs to be last -->
+  <!-- features-->
+  <script src="feature/user/login/activated-ctrl.js"></script>
+  <script src="feature/user/login/login-ctrl.js"></script>
+  <script src="feature/user/login/login-state.js"></script>
+  <link rel="stylesheet/less" href="feature/user/login/login.less"/>
+
+  <script src="feature/user/register/register-ctrl.js"></script>
+  <script src="feature/user/register/register-state.js"></script>
+  <link rel="stylesheet/less" href="feature/user/register/register.less"/>
+
+  <script src="feature/user/user-state.js"></script>
+  <link rel="stylesheet/less" href="feature/user/user.less" type="text/css"/>
+  <script src="feature/user/home/home-ctrl.js"></script>
+  <link rel="stylesheet/less" href="feature/user/home/home.less" type="text/css"/>
+  <script src="feature/user/user-ctrl.js"></script>
+
+  <script src="feature/user/project/project-state.js"></script>
+  <script src="feature/user/project/project-ctrl.js"></script>
+  <script src="feature/user/project/project-menu.js"></script>
+  <script src="feature/user/project/project-form-ctrl.js"></script>
+  <script src="feature/user/project/member-form-ctrl.js"></script>
+  <link rel="stylesheet/less" href="feature/user/project/project.less" type="text/css"/>
+
+  <!--LESS pre-processor - needs to be after all CSS -->
   <script src="lib/less/less.min.js"></script>
 </head>
-<body data-ui-view="content" data-ng-controller="appController">
+<body data-ui-view="root-content">
 </body>
 </html>
