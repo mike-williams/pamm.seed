@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
         @NamedQuery(name = UserEntity.FIND_ALL, query = "SELECT u FROM UserEntity u"),
         @NamedQuery(name = UserEntity.FIND_BY_EMAIL, query = "SELECT u FROM UserEntity u WHERE u.email = :email")
 })
-public class UserEntity {
+public class UserEntity implements Serializable {
     public static final String FIND_ALL = "UserEntity.FIND_ALL";
     public static final String FIND_BY_EMAIL = "UserEntity.FIND_BY_EMAIL";
     public static final String EMAIL_PARAM = "email";

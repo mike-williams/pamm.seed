@@ -28,12 +28,6 @@ public class ProjectUserEntity implements Serializable {
     @Column(name = "user_id", nullable = true)
     private Integer userId;
 
-    @Column(name = "forename", nullable = true)
-    private String forename;
-
-    @Column(name = "surname", nullable = true)
-    private String surname;
-
     @Column(name = "role", nullable = true)
     private String role;
 
@@ -42,7 +36,7 @@ public class ProjectUserEntity implements Serializable {
     private ProjectEntity project;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_email", referencedColumnName = "email", insertable = false, updatable = false)
     private UserEntity user;
 
     public ProjectUserId getId() {
@@ -85,22 +79,6 @@ public class ProjectUserEntity implements Serializable {
         this.userId = userId;
     }
 
-    public String getForename() {
-        return forename;
-    }
-
-    public void setForename(String forename) {
-        this.forename = forename;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -108,8 +86,6 @@ public class ProjectUserEntity implements Serializable {
         ProjectUserEntity that = (ProjectUserEntity) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(userId, that.userId) &&
-                Objects.equals(forename, that.forename) &&
-                Objects.equals(surname, that.surname) &&
                 Objects.equals(role, that.role) &&
                 Objects.equals(project, that.project) &&
                 Objects.equals(user, that.user);
@@ -117,6 +93,6 @@ public class ProjectUserEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, forename, surname, role, project, user);
+        return Objects.hash(id, userId, role, project, user);
     }
 }

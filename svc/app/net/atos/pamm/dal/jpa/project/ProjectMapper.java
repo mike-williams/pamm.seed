@@ -32,8 +32,6 @@ public class ProjectMapper {
 
         projectUserEntity.setId(projectUserId);
         projectUserEntity.setUserId(projectMember.getUserId());
-        projectUserEntity.setForename(projectMember.getForename());
-        projectUserEntity.setSurname(projectMember.getSurname());
         projectUserEntity.setRole(projectMember.getRole().name());
 
         return projectUserEntity;
@@ -52,9 +50,12 @@ public class ProjectMapper {
         member.setProjectId(userEntity.getId().projectId);
         member.setUserId(userEntity.getUserId());
         member.setEmail(userEntity.getId().getUserEmail());
-        member.setForename(userEntity.getForename());
-        member.setSurname(userEntity.getSurname());
         member.setRole(ProjectMember.Role.valueOf(userEntity.getRole()));
+
+        if (userEntity.getUser() != null) {
+            member.setForename(userEntity.getUser().getForename());
+            member.setSurname(userEntity.getUser().getSurname());
+        }
 
         return member;
     }
