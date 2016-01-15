@@ -29,6 +29,10 @@ angular.module("pamm").service("userContext", ["$log", "$rootScope", "$q", "$sta
         this.logout = function () {
             user = null;
             selectedProject = null;
+            favouriteProjects = [];
+            lastFromState = null;
+            lastFromParams = null;
+
             authService.logout();
             $rootScope.$emit(contextEvent.CLEAR_CONTEXT);
             $log.debug("Logged out");

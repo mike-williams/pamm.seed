@@ -6,7 +6,7 @@ angular.module("pamm").service("projectRepository", ["$q", "$log", "dal",  "$roo
 
         (function init() {
             $rootScope.$on(contextEvent.CLEAR_CONTEXT, function clearContext() {
-                projectCache = {};
+                projectCache = [];
                 $log.debug("projectRepository: context cleared");
             })
         })();
