@@ -5,9 +5,9 @@
  * @param $stateParams.from Name of the state.  This is used for navigating back
  */
 
-angular.module("pamm").controller("termsOfUseCtrl", ["$scope", "$state", "$stateParams", "$log",
-    function ($scope, $state, $stateParams, $log) {
-        var vm = $scope;
+angular.module("pamm").controller("termsOfUseCtrl", ["$state", "$stateParams", "$log",
+    function ($state, $stateParams, $log) {
+        var vm = this;
 
         (function init() {
             vm.termsAndConditionsHeading = $$refdata.TERMS_OF_USE.heading;

@@ -1,8 +1,8 @@
 "use strict";
 
-angular.module("pamm").controller("projectMenuCtrl", ["$scope", "$log", "userContext", "$state",
-    function ($scope, $log, userContext, $state) {
-        var vm = $scope;
+angular.module("pamm").controller("projectMenuCtrl", ["$log", "userContext", "$state",
+    function ($log, userContext, $state) {
+        var vm = this;
 
         vm.hasSelectedProject = function () {
             return userContext.getSelectedProject() != undefined;

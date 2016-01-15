@@ -2,7 +2,7 @@
 
 angular.module("pamm").controller("favouritePanelCtrl", ["$rootScope", "$scope", "$log", "userContext",
     function ($rootScope, $scope, $log, userContext) {
-        var vm = $scope;
+        var vm = this;
 
         vm.favouriteProjects = userContext.getFavouriteProjects();
 

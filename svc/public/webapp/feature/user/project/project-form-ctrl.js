@@ -2,7 +2,7 @@
 
 angular.module("pamm").controller("projectFormCtrl", ["$log", "$scope", "$state", "$stateParams", "$uibModal", "projectRepository", "userContext",
     function ($log, $scope, $state, $stateParams, $uibModal, projectRepository, userContext) {
-        var vm = $scope;
+        var vm = this;
         var membersRemovedCount = 0;
 
         (function init() {

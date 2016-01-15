@@ -1,10 +1,13 @@
 "use strict";
 
-angular.module("pamm").controller("projectCtrl", ["$log", "$scope", "$state", "projectRepository", "userContext",
-    function ($log, $scope, $state, projectRepository, userContext) {
-        var vm = $scope;
+angular.module("pamm").controller("projectCtrl", ["$log", "$state", "projectRepository", "userContext",
+    function ($log, $state, projectRepository, userContext) {
+        var vm = this;
+
         (function init() {
+            vm.projects = [];
             vm.waiting = true;
+
             projectRepository.getUserProjects().then(function (results) {
                 vm.waiting = false;
                 vm.projects = results;
@@ -14,8 +17,6 @@ angular.module("pamm").controller("projectCtrl", ["$log", "$scope", "$state", "p
                 $log.error("projectCtrl - cannot load project because of " + error.message);
             })
         })();
-
-        vm.projects = [];
 
         vm.setAsSelected = function (project) {
             userContext.setSelectedProject(project);

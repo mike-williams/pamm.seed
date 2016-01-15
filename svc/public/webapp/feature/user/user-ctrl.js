@@ -1,6 +1,6 @@
-angular.module("pamm").controller("userCtrl", ["$rootScope", "$state", "$log", "$scope", "userContext",
-    function ($rootScope, $state, $log, $scope, userContext) {
-        var vm = $scope;
+angular.module("pamm").controller("userCtrl", ["$rootScope", "$state", "$log", "userContext",
+    function ($rootScope, $state, $log, userContext) {
+        var vm = this;
 
         (function init() {
             vm.aboutVisible = false;
