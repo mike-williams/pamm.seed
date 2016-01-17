@@ -7,10 +7,10 @@
 
   <base href="/">
 
-  <title>pamm</title>
+  <title>PAMM Seed</title>
   <link rel="icon" href="resource/image/pamm-logo.png">
 
-  <!-- Libraries -->
+  <!-- 3rd Party Libraries -->
   <script src="lib/lodash/lodash.min.js"></script>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>
@@ -25,70 +25,28 @@
   <link href="lib/bootstrap3-dialog/css/bootstrap-dialog.min.css" rel="stylesheet">
   <script src="lib/angular-google-chart/ng-google-chart.min.js"></script>
 
-  <!--Base styling-->
-  <link rel="stylesheet/less" href="resource/app.less"/>
-  <link rel="stylesheet/less" href="resource/animate.less"/>
-  <link rel="stylesheet/less" href="resource/breadcrumb.less"/>
-  <link rel="stylesheet/less" href="resource/ui.less"/>
+  <!-- Libraries -->
+  <link rel="stylesheet/less" href="resource/app.less">
+  <script src="utils/module.js"></script>
+  <script src="utils/dialog.js"></script>
 
   <!--Constants and ref data-->
-  <script src="constant/data-type.js"></script>
-  <script src="constant/http.js"></script>
-  <script src="constant/refdata/refdata.js"></script>
+  <script src="constant/_package.js"></script>
 
   <!--Application - must be loaded before dependencies -->
   <script src="app.js"></script>
-  <script src="utils/dialog.js"></script>
 
-  <!--Directives-->
-  <script src="directive/match.js"></script>
-  <script src="directive/lowercase.js"></script>
-  <script src="directive/autofocus.js"></script>
+  <script src="directive/_package.js"></script>
+  <script src="service/_package.js"></script>
 
-  <!--Services-->
-  <script src="service/dal/dal.js"></script>
-  <script src="service/dal/project.js"></script>
-  <script src="service/dal/user.js"></script>
+  <script src="component/_package.js"></script>
 
-  <script src="service/repository/project.js"></script>
-
-  <script src="service/context/context-event.js"></script>
-  <script src="service/context/usercontext.js"></script>
-
-  <script src="service/security/bearer-token/auth-service.js"></script>
-  <script src="service/security/bearer-token/auth-interceptor.js"></script>
-
-  <!--Components-->
-  <script src="component/favourite-panel/favourite-panel-ctrl.js"></script>
-  <link rel="stylesheet/less" href="component/favourite-panel/favourite-panel.less"/>
-
-  <!--common-->
-  <script src="feature/common/terms-of-use/terms-of-use-ctrl.js"></script>
-  <link rel="stylesheet/less" href="feature/common/terms-of-use/terms-of-use.less"/>
-  <script src="feature/common/error/error-state.js"></script>
-
-  <!-- features-->
-  <script src="feature/user/login/activated-ctrl.js"></script>
-  <script src="feature/user/login/login-ctrl.js"></script>
-  <script src="feature/user/login/login-state.js"></script>
-  <link rel="stylesheet/less" href="feature/user/login/login.less"/>
-
-  <script src="feature/user/register/register-ctrl.js"></script>
-  <script src="feature/user/register/register-state.js"></script>
-  <link rel="stylesheet/less" href="feature/user/register/register.less"/>
-
-  <script src="feature/user/user-state.js"></script>
-  <link rel="stylesheet/less" href="feature/user/user.less" type="text/css"/>
-  <script src="feature/user/home/home-ctrl.js"></script>
-  <link rel="stylesheet/less" href="feature/user/home/home.less" type="text/css"/>
-  <script src="feature/user/user-ctrl.js"></script>
-
-  <script src="feature/user/project/project-state.js"></script>
-  <script src="feature/user/project/project-ctrl.js"></script>
-  <script src="feature/user/project/project-menu-ctrl.js"></script>
-  <script src="feature/user/project/project-form-ctrl.js"></script>
-  <script src="feature/user/project/member-form-ctrl.js"></script>
-  <link rel="stylesheet/less" href="feature/user/project/project.less" type="text/css"/>
+  <script src="feature/common/_package.js"></script>
+  <script src="feature/user/_package.js"></script>
+  <script src="feature/user/login/_package.js"></script>
+  <script src="feature/user/register/_package.js"></script>
+  <script src="feature/user/project/_package.js"></script>
+  <script src="feature/user/home/_package.js"></script>
 
   <!--LESS pre-processor - needs to be after all CSS -->
   <script src="lib/less/less.min.js"></script>
