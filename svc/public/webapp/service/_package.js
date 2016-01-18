@@ -6,6 +6,7 @@ $$require.script("repository/project.js");
 
 $$require.script("context/context-event.js");
 $$require.script("context/usercontext.js");
+$$require.script("context/cache.js");
 
 $$require.script("refdata/legal.js");
 
