@@ -2,9 +2,9 @@ package net.atos.pamm.dal.jpa.project;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import net.atos.pamm.domain.model.RepositoryObjectFactory;
-import net.atos.pamm.domain.model.project.ProjectMember;
-import net.atos.pamm.domain.model.project.Project;
+import net.atos.pamm.domain.RepositoryObjectFactory;
+import net.atos.pamm.domain.project.model.ProjectMember;
+import net.atos.pamm.domain.project.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,16 @@ public class ProjectMapper {
     }
 
     public ProjectEntity projectToEntity(Project project) {
-        return repositoryObjectFactory.createEntity(project, ProjectEntity.class);
+        final ProjectEntity projectEntity = new ProjectEntity();
+
+        projectEntity.setId(project.getId());
+        projectEntity.setTitle(project.getTitle());
+        projectEntity.setProjectCode(project.getProjectCode());
+        projectEntity.setClient(project.getClient());
+        projectEntity.setSummary(project.getSummary());
+        projectEntity.setStatus(project.getStatus());
+
+        return projectEntity;
     }
 
     public ProjectUserEntity projectUserToEntity(ProjectMember projectMember, Project project) {
@@ -42,6 +51,9 @@ public class ProjectMapper {
         for (ProjectMember projectMember : project.getMembers()) {
             projectUserEntities.add(projectUserToEntity(projectMember, project));
         }
+
+        projectUserEntities.add(projectUserToEntity(project.getOwner(), project));
+
         return projectUserEntities;
     }
 
@@ -52,6 +64,7 @@ public class ProjectMapper {
         member.setEmail(userEntity.getId().getUserEmail());
         member.setRole(ProjectMember.Role.valueOf(userEntity.getRole()));
 
+        // user may not have registered
         if (userEntity.getUser() != null) {
             member.setForename(userEntity.getUser().getForename());
             member.setSurname(userEntity.getUser().getSurname());
@@ -64,13 +77,7 @@ public class ProjectMapper {
         final List<Project> projects = new ArrayList<>();
 
         for (ProjectEntity projectEntity : projectEntities) {
-            final Project project = repositoryObjectFactory.createBusinessObject(projectEntity, Project.class);
-            final List<ProjectMember> members = new ArrayList<>();
-            for (ProjectUserEntity userEntity : projectEntity.getMembers()) {
-                members.add(projectUserToBusinessObject(userEntity));
-            }
-            project.setMembers(members);
-            projects.add(project);
+            projects.add(projectToBusinessObject(projectEntity));
         }
         return projects;
     }
@@ -79,7 +86,13 @@ public class ProjectMapper {
         final Project project = repositoryObjectFactory.createBusinessObject(projectEntity, Project.class);
         final List<ProjectMember> members = new ArrayList<>();
         for (ProjectUserEntity userEntity : projectEntity.getMembers()) {
-            members.add(projectUserToBusinessObject(userEntity));
+            final ProjectMember member = projectUserToBusinessObject(userEntity);
+
+            if (member.getRole().equals(ProjectMember.Role.OWNER)) {
+                project.setOwner(member);
+            } else {
+                members.add(member);
+            }
         }
         project.setMembers(members);
         return project;

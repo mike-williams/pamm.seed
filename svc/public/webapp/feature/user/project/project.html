@@ -14,7 +14,7 @@
         </button>
       </div>
       <span>[{{project.projectCode}} : {{project.title}}]&nbsp;</span>
-      <span title="Owner of this project">Owner: {{p.owner(project)}}</span>
+      <span title="Owner of this project">Owner: {{p.project.owner.email}}</span>
     </div>
     <div class="panel-body">
       <p>Client: {{project.client == null ? "N/A" : project.client}}</p>

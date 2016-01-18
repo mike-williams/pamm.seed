@@ -18,16 +18,10 @@ import java.util.Objects;
 @Table(name = "project")
 @Entity
 @NamedQueries({
-        @NamedQuery(name = ProjectEntity.FIND_ALL, query = "SELECT p FROM ProjectEntity p"),
-        @NamedQuery(name = ProjectEntity.FIND_ALL_FOR_OWNER, query = "SELECT p FROM ProjectEntity p WHERE p.ownerId = :ownerId"),
-        @NamedQuery(name = ProjectEntity.FIND_BY_ID, query = "SELECT p FROM ProjectEntity p WHERE p.id = :projectId")
+        @NamedQuery(name = ProjectEntity.FIND_ALL, query = "SELECT p FROM ProjectEntity p")
 })
 public class ProjectEntity {
     public static final String FIND_ALL = "ProjectEntity.FIND_ALL";
-    public static final String FIND_ALL_FOR_OWNER = "ProjectEntity.FIND_ALL_FOR_OWNER";
-    public static final String FIND_BY_ID = "ProjectEntity.FIND_BY_ID";
-    public static final String OWNER_ID_PARAM = "ownerId";
-    public static final String PROJECT_ID_PARAM = "projectId";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,9 +42,6 @@ public class ProjectEntity {
 
     @Column(name = "status", nullable = false)
     private String status;
-
-    @Column(name = "owner_user_id", nullable = false)
-    private String ownerId;
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
@@ -104,14 +95,6 @@ public class ProjectEntity {
         this.status = status;
     }
 
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
-    }
-
     public List<ProjectUserEntity> getMembers() {
         return members;
     }
@@ -131,12 +114,11 @@ public class ProjectEntity {
                 Objects.equals(client, that.client) &&
                 Objects.equals(summary, that.summary) &&
                 Objects.equals(status, that.status) &&
-                Objects.equals(ownerId, that.ownerId) &&
                 Objects.equals(members, that.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, projectCode, client, summary, status, ownerId, members);
+        return Objects.hash(id, title, projectCode, client, summary, status, members);
     }
 }

@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.service;
+package net.atos.pamm.domain;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;

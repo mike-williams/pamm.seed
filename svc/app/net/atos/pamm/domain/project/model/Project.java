@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.model.project;
+package net.atos.pamm.domain.project.model;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +10,7 @@ public class Project {
     private String client;
     private String summary;
     private String status;
-    private Integer ownerId;
+    private ProjectMember owner;
     private List<ProjectMember> members;
 
     public Integer getId() {
@@ -61,12 +61,12 @@ public class Project {
         this.status = status;
     }
 
-    public Integer getOwnerId() {
-        return ownerId;
+    public ProjectMember getOwner() {
+        return owner;
     }
 
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
+    public void setOwner(ProjectMember owner) {
+        this.owner = owner;
     }
 
     public List<ProjectMember> getMembers() {
@@ -88,12 +88,12 @@ public class Project {
                 Objects.equals(client, project.client) &&
                 Objects.equals(summary, project.summary) &&
                 Objects.equals(status, project.status) &&
-                Objects.equals(ownerId, project.ownerId) &&
+                Objects.equals(owner, project.owner) &&
                 Objects.equals(members, project.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, projectCode, client, summary, status, ownerId, members);
+        return Objects.hash(id, title, projectCode, client, summary, status, owner, members);
     }
 }

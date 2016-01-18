@@ -1,6 +1,6 @@
 package net.atos.pamm.endpoint;
 
-import net.atos.pamm.domain.service.ServiceResult;
+import net.atos.pamm.domain.ServiceResult;
 import net.atos.pamm.infrastructure.security.authentication.Principal;
 import net.atos.pamm.infrastructure.security.endpoint.SecuredAction;
 import play.Logger;

@@ -1,18 +1,18 @@
-package net.atos.pamm.domain.service.project;
+package net.atos.pamm.domain.project.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import io.jsonwebtoken.Claims;
-import net.atos.pamm.domain.model.project.Project;
-import net.atos.pamm.domain.model.project.ProjectMember;
-import net.atos.pamm.domain.model.project.ProjectRepository;
-import net.atos.pamm.domain.model.user.User;
-import net.atos.pamm.domain.model.user.UserRepository;
+import net.atos.pamm.domain.ServiceResult;
+import net.atos.pamm.domain.project.ProjectRepository;
+import net.atos.pamm.domain.project.model.Project;
+import net.atos.pamm.domain.project.model.ProjectMember;
+import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.model.User;
+import net.atos.pamm.infrastructure.mail.EmailService;
 import net.atos.pamm.infrastructure.security.authentication.Principal;
 import play.Logger;
 import play.libs.Json;
 import play.mvc.Http;
-import net.atos.pamm.infrastructure.mail.EmailService;
-import net.atos.pamm.domain.service.ServiceResult;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -43,7 +43,6 @@ public class CreateProjectOperation {
         project.setClient(jsonRequest.findPath("client").textValue());
         project.setSummary(jsonRequest.findPath("summary").textValue());
         project.setStatus(jsonRequest.findPath("status").textValue());
-        project.setOwnerId(new Integer(principal.getSubject()));
 
         final List<ProjectMember> members = new ArrayList<>();
         for (JsonNode jsonMember : jsonRequest.findValue("members")) {
@@ -58,6 +57,7 @@ public class CreateProjectOperation {
             }
             members.add(member);
         }
+        project.setMembers(members);
 
         final Claims claims = principal.getClaims();
         final ProjectMember ownerMember = new ProjectMember();
@@ -68,10 +68,12 @@ public class CreateProjectOperation {
         ownerMember.setEmail((String) claims.get("email"));
         ownerMember.setRole(ProjectMember.Role.OWNER);
 
-        members.add(ownerMember);
-        project.setMembers(members);
+        project.setOwner(ownerMember);
 
         final Project savedProject = projectRepository.set(project);
+
+        // TODO email project members
+
         return new ServiceResult(Json.toJson(savedProject));
     }
 }

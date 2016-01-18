@@ -1,12 +1,14 @@
-package net.atos.pamm.domain.service.project;
+package net.atos.pamm.domain.project.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import net.atos.pamm.domain.model.project.ProjectMember;
-import net.atos.pamm.domain.model.project.ProjectRepository;
-import play.Logger;
+import net.atos.pamm.domain.ServiceResult;
+import net.atos.pamm.domain.SessionStatus;
+import net.atos.pamm.domain.project.ProjectRepository;
+import net.atos.pamm.domain.project.model.Project;
+import net.atos.pamm.domain.project.model.ProjectMember;
 import net.atos.pamm.infrastructure.mail.EmailService;
-import net.atos.pamm.domain.model.project.Project;
-import net.atos.pamm.domain.service.ServiceResult;
+import play.Logger;
+import play.libs.Json;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -35,7 +37,6 @@ public class UpdateProjectOperation {
         project.setClient(jsonRequest.findPath("client").textValue());
         project.setSummary(jsonRequest.findPath("summary").textValue());
         project.setStatus(jsonRequest.findPath("status").textValue());
-        project.setOwnerId(jsonRequest.findPath("ownerId").asInt());
 
         final List<ProjectMember> members = new ArrayList<>();
         for (JsonNode jsonMember : jsonRequest.findValue("members")) {
@@ -52,14 +53,17 @@ public class UpdateProjectOperation {
             }
 
             if (jsonMember.findPath("sessionStatus").textValue() != null) {
-                member.setStatus(ProjectMember.SessionStatus.valueOf(jsonMember.findPath("sessionStatus").textValue()));
+                member.setSessionStatus(SessionStatus.valueOf(jsonMember.findPath("sessionStatus").textValue()));
             }
 
             members.add(member);
         }
         project.setMembers(members);
-        projectRepository.update(project);
+        final Project updatedProject = projectRepository.update(project);
 
-        return new ServiceResult(jsonRequest);
+        // TODO email new project members
+
+
+        return new ServiceResult(Json.toJson(updatedProject));
     }
 }

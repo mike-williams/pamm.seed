@@ -54,7 +54,7 @@ angular.module("pamm").service("dal", ["$http", "$q", "$log", function ($http, $
                         data: JSON.stringify(itemToSave)
                     }
                 ).then(function (results) {
-                    deferred.resolve(results);
+                    deferred.resolve(results.data);
                 }, function (e) {
                     deferred.reject(e);
                 });

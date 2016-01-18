@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.model.user;
+package net.atos.pamm.domain.user.model;
 
 import java.util.Date;
 import java.util.Objects;

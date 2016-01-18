@@ -1,10 +1,11 @@
-package net.atos.pamm.domain.model.project;
+package net.atos.pamm.domain.project.model;
+
+import net.atos.pamm.domain.SessionStatus;
 
 import java.util.Objects;
 
 public class ProjectMember {
     public enum Role {OWNER, MEMBER};
-    public enum SessionStatus {NEW, REMOVED};
 
     private Integer projectId;
     private Integer userId;
@@ -13,14 +14,14 @@ public class ProjectMember {
     private String surname;
     private Role role;
 
-    private SessionStatus status;
+    private SessionStatus sessionStatus;
 
-    public SessionStatus getStatus() {
-        return status;
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
     }
 
-    public void setStatus(SessionStatus status) {
-        this.status = status;
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
     }
 
     public Integer getUserId() {
@@ -83,11 +84,11 @@ public class ProjectMember {
                 Objects.equals(forename, that.forename) &&
                 Objects.equals(surname, that.surname) &&
                 role == that.role &&
-                status == that.status;
+                sessionStatus == that.sessionStatus;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(projectId, userId, email, forename, surname, role, status);
+        return Objects.hash(projectId, userId, email, forename, surname, role, sessionStatus);
     }
 }

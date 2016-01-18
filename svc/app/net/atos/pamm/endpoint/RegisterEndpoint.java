@@ -1,7 +1,7 @@
 package net.atos.pamm.endpoint;
 
-import net.atos.pamm.domain.service.ServiceResult;
-import net.atos.pamm.domain.service.user.UserService;
+import net.atos.pamm.domain.ServiceResult;
+import net.atos.pamm.domain.user.service.UserService;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;

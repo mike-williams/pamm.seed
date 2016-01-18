@@ -3,7 +3,7 @@ package net.atos.pamm.endpoint;
 import play.Logger;
 import play.db.jpa.Transactional;
 import play.mvc.Result;
-import net.atos.pamm.domain.service.project.ProjectService;
+import net.atos.pamm.domain.project.service.ProjectService;
 
 import javax.inject.Inject;
 

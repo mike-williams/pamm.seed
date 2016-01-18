@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.service.user;
+package net.atos.pamm.domain.user.service;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.jsonwebtoken.Claims;
@@ -6,7 +6,7 @@ import net.atos.pamm.infrastructure.security.authentication.Authenticator;
 import net.atos.pamm.infrastructure.security.authentication.Principal;
 import play.Logger;
 import play.libs.Json;
-import net.atos.pamm.domain.service.ServiceResult;
+import net.atos.pamm.domain.ServiceResult;
 
 import javax.inject.Inject;
 

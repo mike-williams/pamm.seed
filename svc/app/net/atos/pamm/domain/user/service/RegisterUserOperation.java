@@ -1,12 +1,12 @@
-package net.atos.pamm.domain.service.user;
+package net.atos.pamm.domain.user.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import net.atos.pamm.infrastructure.util.RandomKeyGenerator;
 import net.atos.pamm.infrastructure.util.RequestUtil;
 import play.Logger;
-import net.atos.pamm.domain.service.ServiceResult;
-import net.atos.pamm.domain.model.user.User;
-import net.atos.pamm.domain.model.user.UserRepository;
+import net.atos.pamm.domain.ServiceResult;
+import net.atos.pamm.domain.user.model.User;
+import net.atos.pamm.domain.user.UserRepository;
 import net.atos.pamm.infrastructure.mail.EmailService;
 import net.atos.pamm.infrastructure.security.cipher.BCryptCipher;
 

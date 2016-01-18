@@ -2,7 +2,7 @@
 
 angular.module("pamm").controller("projectFormCtrl", ["$log", "$scope", "$state", "$stateParams", "$uibModal", "projectRepository", "userContext",
     function ($log, $scope, $state, $stateParams, $uibModal, projectRepository, userContext) {
-        var vm = this;
+        var vm = $scope;
         var membersRemovedCount = 0;
 
         (function init() {
@@ -47,19 +47,23 @@ angular.module("pamm").controller("projectFormCtrl", ["$log", "$scope", "$state"
 
             modalInstance.result.then(
                 function (newMember) {
-                    var searchResult = _.find(vm.project.members, function (member) {
-                        return member.email == newMember.email
-                    });
-
-                    if (searchResult) {
-                        if (searchResult.role == "OWNER") {
-                            $$dialog.error("There is no need to add yourself as you are the owner of this project");
-                        } else {
-                            $$dialog.error(newMember.email + " has already been added to this project team");
-                        }
+                    if (newMember.email == userContext.getUser().email) {
+                        $$dialog.error("There is no need to add yourself as you are the owner of this project");
                     } else {
-                        newMember.sessionStatus = "NEW";
-                        vm.project.members.push(newMember);
+                        var searchResult = _.find(vm.project.members, function (member) {
+                            return member.email == newMember.email
+                        });
+
+                        if (searchResult) {
+                            if (searchResult.sessionStatus == "REMOVED") {
+                                delete searchResult.sessionStatus;
+                            } else {
+                                $$dialog.error(newMember.email + " has already been added to this project team");
+                            }
+                        } else {
+                            newMember.sessionStatus = "NEW";
+                            vm.project.members.push(newMember);
+                        }
                     }
                 }, function dismissed() {
                 }
@@ -82,10 +86,7 @@ angular.module("pamm").controller("projectFormCtrl", ["$log", "$scope", "$state"
         };
 
         vm.hasMembers = function () {
-            if (vm.project.hasOwnProperty("id")) {
-                return vm.project.members.length - membersRemovedCount > 1;
-            } else {
-                return vm.project.members.length - membersRemovedCount > 0;
-            }
+            return vm.project.members.length - membersRemovedCount > 0;
         };
     }]);
+

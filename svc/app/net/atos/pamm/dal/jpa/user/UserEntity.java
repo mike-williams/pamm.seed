@@ -1,6 +1,6 @@
 package net.atos.pamm.dal.jpa.user;
 
-import net.atos.pamm.domain.model.user.User.Role;
+import net.atos.pamm.domain.user.model.User.Role;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

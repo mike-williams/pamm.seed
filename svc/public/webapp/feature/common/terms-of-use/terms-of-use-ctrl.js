@@ -5,13 +5,13 @@
  * @param $stateParams.from Name of the state.  This is used for navigating back
  */
 
-angular.module("pamm").controller("termsOfUseCtrl", ["$state", "$stateParams", "$log",
-    function ($state, $stateParams, $log) {
+angular.module("pamm").controller("termsOfUseCtrl", ["$state", "$stateParams", "$log", "legalRefData",
+    function ($state, $stateParams, $log, legalRefData) {
         var vm = this;
 
         (function init() {
-            vm.termsAndConditionsHeading = $$refdata.TERMS_OF_USE.heading;
-            vm.termsAndConditionsBody = $$refdata.TERMS_OF_USE.body;
+            vm.termsAndConditionsHeading = legalRefData.TERMS_OF_USE.heading;
+            vm.termsAndConditionsBody = legalRefData.TERMS_OF_USE.body;
         })();
 
         vm.back = function () {

@@ -1,9 +1,9 @@
-package net.atos.pamm.domain.service.project;
+package net.atos.pamm.domain.project.service;
 
-import net.atos.pamm.domain.model.project.Project;
-import net.atos.pamm.domain.model.project.ProjectRepository;
+import net.atos.pamm.domain.project.model.Project;
+import net.atos.pamm.domain.project.ProjectRepository;
 import play.Logger;
-import net.atos.pamm.domain.service.ServiceResult;
+import net.atos.pamm.domain.ServiceResult;
 
 import javax.inject.Inject;
 

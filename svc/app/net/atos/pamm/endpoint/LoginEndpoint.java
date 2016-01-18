@@ -1,7 +1,7 @@
 package net.atos.pamm.endpoint;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import net.atos.pamm.domain.service.user.UserService;
+import net.atos.pamm.domain.user.service.UserService;
 import play.Logger;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;

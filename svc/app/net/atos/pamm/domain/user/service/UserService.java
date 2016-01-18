@@ -1,7 +1,7 @@
-package net.atos.pamm.domain.service.user;
+package net.atos.pamm.domain.user.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import net.atos.pamm.domain.service.ServiceResult;
+import net.atos.pamm.domain.ServiceResult;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

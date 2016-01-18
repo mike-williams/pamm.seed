@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.model;
+package net.atos.pamm.domain;
 
 import net.atos.pamm.infrastructure.util.JSONHelper;
 

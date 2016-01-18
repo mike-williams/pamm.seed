@@ -1,8 +1,8 @@
-package net.atos.pamm.domain.service.user;
+package net.atos.pamm.domain.user.service;
 
-import net.atos.pamm.domain.model.user.User;
-import net.atos.pamm.domain.model.user.UserRepository;
-import net.atos.pamm.domain.service.ServiceResult;
+import net.atos.pamm.domain.user.model.User;
+import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.ServiceResult;
 
 import javax.inject.Inject;
 
