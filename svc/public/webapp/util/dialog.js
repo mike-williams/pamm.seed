@@ -17,7 +17,7 @@ var $$dialog = {
 
     success: function (successMessage, closeAction) {
         return BootstrapDialog.show({
-            message: $("<div><i class='icon ok large'></i>" + successMessage + "</div>"),
+            message: $("<div><i class='fa fa-check fa-3x'></i>" + successMessage + "</div>"),
             closable: false,
             type: BootstrapDialog.TYPE_SUCCESS,
             buttons: [{
@@ -37,7 +37,7 @@ var $$dialog = {
         }
         return BootstrapDialog.alert({
             title: "Error",
-            message: $("<div><i class='icon attention large'></i>" + errorMessage + "</div>"),
+            message: $("<div><i class='fa fa-exclamation-circle fa-3x'></i>" + errorMessage + "</div>"),
             closable: false,
             type: BootstrapDialog.TYPE_DANGER
         });
@@ -45,7 +45,7 @@ var $$dialog = {
 
     confirm: function (confirmMessage, buttonLabel, confirmedCallback) {
         return BootstrapDialog.confirm({
-            message: $("<div><i class='icon warning large'></i>" + confirmMessage + "</div>"),
+            message: $("<div><i class='fa fa-warning fa-3x'></i>" + confirmMessage + "</div>"),
             type: BootstrapDialog.TYPE_WARNING,
             closable: false,
             btnOKLabel: buttonLabel,
