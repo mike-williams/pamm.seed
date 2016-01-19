@@ -1,4 +1,4 @@
-package net.atos.pamm.dal.jpa;
+package net.atos.pamm.dal;
 
 import play.Logger;
 import play.db.jpa.JPA;

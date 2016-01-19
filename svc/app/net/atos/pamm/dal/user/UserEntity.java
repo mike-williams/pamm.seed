@@ -1,4 +1,4 @@
-package net.atos.pamm.dal.jpa.user;
+package net.atos.pamm.dal.user;
 
 import net.atos.pamm.domain.user.model.User.Role;
 

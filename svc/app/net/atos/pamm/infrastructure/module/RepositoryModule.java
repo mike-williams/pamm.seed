@@ -1,8 +1,8 @@
 package net.atos.pamm.infrastructure.module;
 
 import com.google.inject.AbstractModule;
-import net.atos.pamm.dal.jpa.project.ProjectJpaRepository;
-import net.atos.pamm.dal.jpa.user.UserJpaRepository;
+import net.atos.pamm.dal.project.ProjectJpaRepository;
+import net.atos.pamm.dal.user.UserJpaRepository;
 import net.atos.pamm.domain.project.ProjectRepository;
 import net.atos.pamm.domain.user.UserRepository;
 

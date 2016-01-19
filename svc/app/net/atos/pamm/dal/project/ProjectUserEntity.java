@@ -1,6 +1,6 @@
-package net.atos.pamm.dal.jpa.project;
+package net.atos.pamm.dal.project;
 
-import net.atos.pamm.dal.jpa.user.UserEntity;
+import net.atos.pamm.dal.user.UserEntity;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;

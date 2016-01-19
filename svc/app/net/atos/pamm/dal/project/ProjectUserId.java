@@ -1,4 +1,4 @@
-package net.atos.pamm.dal.jpa.project;
+package net.atos.pamm.dal.project;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

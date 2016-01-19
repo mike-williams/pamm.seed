@@ -42,12 +42,13 @@ public class RegisterUserOperation {
             final User user = new User();
 
             user.setEmail(jsonRequest.findPath("email").textValue());
-            user.setPassword(cipher.hash(jsonRequest.findPath("password").textValue()));
             user.setForename(jsonRequest.findPath("forename").textValue());
             user.setSurname(jsonRequest.findPath("surname").textValue());
             user.setJobTitle(jsonRequest.findPath("job_title").textValue());
             user.setBaseSite(jsonRequest.findPath("base_site").textValue());
             user.setPhone(jsonRequest.findPath("phone").textValue());
+
+            user.setPassword(cipher.hash(jsonRequest.findPath("password").textValue()));
             user.setActivated(false);
             user.setActivationKey(randomKeyGenerator.generate());
             user.setRole(User.Role.USER);

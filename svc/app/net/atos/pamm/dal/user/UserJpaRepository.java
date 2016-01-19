@@ -1,12 +1,10 @@
-package net.atos.pamm.dal.jpa.user;
+package net.atos.pamm.dal.user;
 
-import net.atos.pamm.dal.jpa.EntityManagerProvider;
-import net.atos.pamm.dal.jpa.project.ProjectEntity;
-import net.atos.pamm.dal.jpa.project.ProjectMapper;
-import net.atos.pamm.dal.jpa.project.ProjectUserEntity;
+import net.atos.pamm.dal.EntityManagerProvider;
+import net.atos.pamm.dal.project.ProjectMapper;
+import net.atos.pamm.dal.project.ProjectUserEntity;
 import net.atos.pamm.domain.RepositoryObjectFactory;
 import net.atos.pamm.domain.project.model.Project;
-import net.atos.pamm.domain.project.model.ProjectMember;
 import net.atos.pamm.domain.user.model.User;
 import net.atos.pamm.domain.user.UserRepository;
 import play.Logger;

@@ -1,4 +1,4 @@
-package net.atos.pamm.dal.jpa.project;
+package net.atos.pamm.dal.project;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
