@@ -1,6 +1,6 @@
 package net.atos.pamm.domain.user.service;
 
-import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.repository.UserRepository;
 import play.Logger;
 import play.libs.Json;
 import net.atos.pamm.domain.project.model.Project;

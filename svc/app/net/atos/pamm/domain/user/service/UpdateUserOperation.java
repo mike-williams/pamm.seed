@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.Logger;
 import net.atos.pamm.domain.ServiceResult;
 import net.atos.pamm.domain.user.model.User;
-import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.repository.UserRepository;
 
 import javax.inject.Inject;
 

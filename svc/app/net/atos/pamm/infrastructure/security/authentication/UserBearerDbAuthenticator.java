@@ -3,7 +3,7 @@ package net.atos.pamm.infrastructure.security.authentication;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.impl.TextCodec;
 import net.atos.pamm.domain.user.model.User;
-import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.repository.UserRepository;
 import net.atos.pamm.infrastructure.security.cipher.Cipher;
 import net.atos.pamm.infrastructure.util.RandomKeyGenerator;
 import org.apache.commons.lang3.time.DateUtils;

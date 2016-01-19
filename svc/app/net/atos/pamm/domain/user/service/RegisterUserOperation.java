@@ -2,7 +2,7 @@ package net.atos.pamm.domain.user.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import net.atos.pamm.domain.ServiceResult;
-import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.repository.UserRepository;
 import net.atos.pamm.domain.user.model.User;
 import net.atos.pamm.infrastructure.mail.EmailService;
 import net.atos.pamm.infrastructure.security.cipher.BCryptCipher;

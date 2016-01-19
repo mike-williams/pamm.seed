@@ -3,7 +3,7 @@ package net.atos.pamm.domain.project.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import io.jsonwebtoken.Claims;
 import net.atos.pamm.domain.ServiceResult;
-import net.atos.pamm.domain.project.ProjectRepository;
+import net.atos.pamm.domain.project.repository.ProjectRepository;
 import net.atos.pamm.domain.project.model.Project;
 import net.atos.pamm.domain.project.model.ProjectMember;
 import net.atos.pamm.infrastructure.mail.EmailService;

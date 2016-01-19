@@ -2,7 +2,7 @@ package net.atos.pamm.dal.project;
 
 import net.atos.pamm.dal.EntityManagerProvider;
 import net.atos.pamm.domain.SessionStatus;
-import net.atos.pamm.domain.project.ProjectRepository;
+import net.atos.pamm.domain.project.repository.ProjectRepository;
 import net.atos.pamm.domain.project.model.Project;
 import net.atos.pamm.domain.project.model.ProjectMember;
 import play.Logger;

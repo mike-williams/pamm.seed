@@ -6,7 +6,7 @@ import net.atos.pamm.dal.project.ProjectUserEntity;
 import net.atos.pamm.domain.RepositoryObjectFactory;
 import net.atos.pamm.domain.project.model.Project;
 import net.atos.pamm.domain.user.model.User;
-import net.atos.pamm.domain.user.UserRepository;
+import net.atos.pamm.domain.user.repository.UserRepository;
 import play.Logger;
 
 import javax.inject.Inject;

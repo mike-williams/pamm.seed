@@ -1,4 +1,4 @@
-package net.atos.pamm.domain.user;
+package net.atos.pamm.domain.user.repository;
 
 import net.atos.pamm.domain.project.model.Project;
 import net.atos.pamm.domain.user.model.User;
