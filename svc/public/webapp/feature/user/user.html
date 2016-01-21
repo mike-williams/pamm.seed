@@ -20,15 +20,11 @@
 
   <div class="row">
     <aside class="col-md-3 col-sm-4">
-      <div class="selected-project" data-ng-show="u.getSelectedProject() == undefined"><i class="icon pin-off medium"></i>No
-        Selected Project
-      </div>
-      <div class="selected-project" data-ng-show="u.getSelectedProject() != undefined"><i class="icon pin-on medium"></i>
-        {{u.getSelectedProject().title}}
-      </div>
+      <projectsummary project="u.getSelectedProject()"></projectsummary>
       <div data-ui-view="sidebar-menu"></div>
       <div data-ui-view="sidebar-panel">
-        <favpanel>
+        <favpanel></favpanel>
+
       </div>
     </aside>
     <main data-ui-view="feature" class="col-md-9 col-sm-8 col-xs-12 container"></main>

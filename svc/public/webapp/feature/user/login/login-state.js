@@ -18,5 +18,5 @@ angular.module("pamm").config(function ($stateProvider) {
         }
     });
 
-    $log.debug("Login states configured");
+    $log.info("Login states configured");
 });

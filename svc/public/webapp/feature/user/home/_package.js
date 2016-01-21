@@ -1,5 +1,2 @@
-"use strict";
-(function () {
-    $$require.script("home-ctrl.js");
-    $$require.less("home.less");
-})();
+$$require.script("home-ctrl.js");
+$$require.less("home.less");

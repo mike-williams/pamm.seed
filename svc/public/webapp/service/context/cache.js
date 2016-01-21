@@ -13,7 +13,7 @@ angular.module("pamm").service("cacheManager", ["$log", "$rootScope", "$cacheFac
                 for (var i = 0; i < cache.length; i++) {
                     cache[i].removeAll();
                 }
-                $log.debug("cacheManager: context cleared");
+                $log.info("cacheManager: context cleared");
             })
         })();
 
@@ -24,5 +24,5 @@ angular.module("pamm").service("cacheManager", ["$log", "$rootScope", "$cacheFac
             return cache[cacheId];
         };
 
-        $log.debug("cacheManager: Instantiated");
+        $log.info("cacheManager: Instantiated");
     }]);

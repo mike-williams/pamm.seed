@@ -25,5 +25,5 @@ angular.module("pamm").config(function ($stateProvider) {
             }
         }
     });
-    $log.debug("Register routes configured");
+    $log.info("Register routes configured");
 });

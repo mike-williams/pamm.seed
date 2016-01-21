@@ -6,5 +6,5 @@ angular.module("pamm").service("userDao", ["dal", "$log",
             return dal.http.POST("register/user", newUser);
         };
 
-        $log.debug("dal:userDao Instantiated");
+        $log.info("dal:userDao Instantiated");
     }]);

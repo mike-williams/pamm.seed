@@ -11,5 +11,5 @@ angular.module("pamm").service("legalRefData", ["$log",
             ]
         };
 
-        $log.debug("legalRefData: Instantiated");
+        $log.info("legalRefData: Instantiated");
     }]);

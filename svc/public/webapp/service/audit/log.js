@@ -6,33 +6,35 @@ angular.module("pamm").decorator("$log", ["$delegate", function ($delegate) {
     var warn = $delegate.warn;
     var error = $delegate.error;
 
+    var audit = function(level, message) {
+        // TODO send to server
+    };
 
     $delegate.log = function (message) {
         log("[LOG] " + message);
-        // TODO sent to server
+        audit("LOG", message);
     };
 
     $delegate.info = function (message) {
-        info("[INFO] " + message);
-        // TODO sent to server
+        info("[DEBUG] " + message);
+        audit("DEBUG", message);
     };
 
     $delegate.warn = function (message) {
-        warn("[WARN] " + message);
-        // TODO sent to server
+        warn("[DEBUG] " + message);
+        audit("DEBUG", message);
     };
 
     $delegate.error = function (message) {
-        error("[ERROR] " + message);
-        // TODO sent to server
+        error("[DEBUG] " + message);
+        audit("DEBUG", message);
     };
 
     $delegate.debug = function (message) {
 
         debug("[DEBUG] " + message);
-        // TODO sent to server
+        audit("DEBUG", message);
     };
-
 
     $delegate.debug("Audit: added logging");
     return $delegate;

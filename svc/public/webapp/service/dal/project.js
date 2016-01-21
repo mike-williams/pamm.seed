@@ -13,5 +13,5 @@ angular.module("pamm").service("projectDao", ["dal", "$log", function (dal, $log
         return dal.http.PUT("project", projectToUpdate);
     };
 
-    $log.debug("dal:projectDao Instantiated");
+    $log.info("dal:projectDao Instantiated");
 }]);

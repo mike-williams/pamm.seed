@@ -74,5 +74,5 @@ angular.module("pamm").service("dal", ["$http", "$q", "$log", function ($http, $
             }
         }
     })();
-    $log.debug("dal:serviceCaller Instantiated");
+    $log.info("dal:serviceCaller Instantiated");
 }]);

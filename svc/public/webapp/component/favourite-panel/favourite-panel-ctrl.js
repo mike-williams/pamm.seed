@@ -23,5 +23,5 @@ angular.module("pamm").controller("favouritePanelCtrl", ["$scope", "$log", "user
                 });
         };
 
-        $log.debug("favouritePanelCtrl: instantiated");
+        $log.info("favouritePanelCtrl: instantiated");
     }]);

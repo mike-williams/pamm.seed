@@ -9,5 +9,5 @@ angular.module("pamm").service("issueDao", ["dal", "$log", function (dal, $log) 
         return dal.http.POST("project/" + projectId + "/issue", issueToSave);
     };
 
-    $log.debug("dal:issueDao Instantiated");
+    $log.info("dal:issueDao Instantiated");
 }]);

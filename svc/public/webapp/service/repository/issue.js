@@ -7,7 +7,7 @@ angular.module("pamm").service("issueRepository", ["$q", "$log", "dal", "$rootSc
         (function init() {
             $rootScope.$on(contextEvent.CLEAR_CONTEXT, function clearContext() {
                 issueCache = [];
-                $log.debug("issueRepository: context cleared");
+                $log.info("issueRepository: context cleared");
             })
         })();
 

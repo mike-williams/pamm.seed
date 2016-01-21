@@ -51,5 +51,5 @@ angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDa
             $state.go("user.termsofuse");
         };
 
-        $log.debug("userRegisterCtrl: instantiated");
+        $log.info("userRegisterCtrl: instantiated");
     }]);

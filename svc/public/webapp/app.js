@@ -1,13 +1,13 @@
 angular.module("pamm", ["ui.router", "googlechart", "ui.bootstrap", "ngAnimate", "ngMessages"]).run(
     function ($window, $rootScope, $log) {
-        $log.debug("App Instantiated");
+        $log.info("App Instantiated");
     }).config(
     function ($urlRouterProvider, $locationProvider) {
         var $log = angular.injector(["ng"]).get("$log");
         $urlRouterProvider.otherwise("user/login");
         $locationProvider.html5Mode(true);
 
-        $log.debug("Configured HTML5 routing");
+        $log.info("Configured HTML5 routing");
     }).provider("runtimeStates",
     function runtimeStates($stateProvider) {
         var $log = angular.injector(["ng"]).get("$log");
@@ -18,6 +18,6 @@ angular.module("pamm", ["ui.router", "googlechart", "ui.bootstrap", "ngAnimate",
                 }
             }
         };
-        $log.debug("Configured RuntimeStates Provider");
+        $log.info("Configured RuntimeStates Provider");
     });
 

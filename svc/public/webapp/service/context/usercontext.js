@@ -35,7 +35,7 @@ angular.module("pamm").service("userContext", ["$log", "$rootScope", "$q", "$sta
 
             authService.logout();
             $rootScope.$emit(contextEvent.CLEAR_CONTEXT);
-            $log.debug("Logged out");
+            $log.info("Logged out");
         };
 
         this.getUser = function () {
@@ -84,5 +84,5 @@ angular.module("pamm").service("userContext", ["$log", "$rootScope", "$q", "$sta
             });
         })();
 
-        $log.debug("userContext: Instantiated");
+        $log.info("userContext: Instantiated");
     }]);
