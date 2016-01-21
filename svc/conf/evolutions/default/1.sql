@@ -46,6 +46,17 @@ CREATE TABLE project_user (
   FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
+CREATE TABLE issue (
+  id         BIGINT(20)    NOT NULL AUTO_INCREMENT,
+  text       VARCHAR(1024) NOT NULL,
+  entry_date DATETIME      NOT NULL DEFAULT SYSDATE(),
+  user_id    BIGINT(20)    NOT NULL,
+  status     VARCHAR(20)   NOT NULL,
+
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES project_user (user_id)
+);
+
 # --- !Downs
 
 DROP TABLE project_user;

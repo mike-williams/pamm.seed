@@ -1,8 +1,10 @@
 $$require.script("dal/dal.js");
 $$require.script("dal/user.js");
 $$require.script("dal/project.js");
+$$require.script("dal/issue.js");
 
 $$require.script("repository/project.js");
+$$require.script("repository/issue.js");
 
 $$require.script("context/context-event.js");
 $$require.script("context/usercontext.js");

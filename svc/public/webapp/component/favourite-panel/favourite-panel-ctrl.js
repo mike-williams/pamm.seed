@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("pamm").controller("favouritePanelCtrl", ["$rootScope", "$scope", "$log", "userContext",
-    function ($rootScope, $scope, $log, userContext) {
+angular.module("pamm").controller("favouritePanelCtrl", ["$scope", "$log", "userContext",
+    function ($scope, $log, userContext) {
         var vm = this;
 
         vm.favouriteProjects = userContext.getFavouriteProjects();

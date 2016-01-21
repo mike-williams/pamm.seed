@@ -7,22 +7,22 @@
 
 # DYNAMIC CONTENT
 
-GET           /project                       net.atos.pamm.endpoint.ProjectsEndpoint.list()
-GET           /project/:id                   net.atos.pamm.endpoint.ProjectsEndpoint.find(id: Integer)
-POST          /project                       net.atos.pamm.endpoint.ProjectsEndpoint.create()
-PUT           /project                       net.atos.pamm.endpoint.ProjectsEndpoint.update()
-DELETE        /project/:id                   net.atos.pamm.endpoint.ProjectsEndpoint.delete(id: Integer)
+GET           /project                       org.pamm.endpoint.ProjectsEndpoint.list()
+GET           /project/:id                   org.pamm.endpoint.ProjectsEndpoint.find(id: Integer)
+POST          /project                       org.pamm.endpoint.ProjectsEndpoint.create()
+PUT           /project                       org.pamm.endpoint.ProjectsEndpoint.update()
+DELETE        /project/:id                   org.pamm.endpoint.ProjectsEndpoint.delete(id: Integer)
 
-GET           /user/:id/project              net.atos.pamm.endpoint.UserEndpoint.findProjects(id: Integer)
-GET           /user/:id/activate/:key        net.atos.pamm.endpoint.ActivateEndpoint.activate(id: Integer, key: String)
+GET           /user/:id/project              org.pamm.endpoint.UserEndpoint.findProjects(id: Integer)
+GET           /user/:id/activate/:key        org.pamm.endpoint.ActivateEndpoint.activate(id: Integer, key: String)
 
-POST          /register/user                 net.atos.pamm.endpoint.RegisterEndpoint.register()
+POST          /register/user                 org.pamm.endpoint.RegisterEndpoint.register()
 
-GET           /login/user                    net.atos.pamm.endpoint.LoginEndpoint.login()
+GET           /login/user                    org.pamm.endpoint.LoginEndpoint.login()
 
 
-GET           /sse-connection/:id            net.atos.pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
-POST          /sse-request                   net.atos.pamm.endpoint.SSEEndpoint.createSSEExampleRequest()
+GET           /sse-connection/:id            org.pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
+POST          /sse-request                   org.pamm.endpoint.SSEEndpoint.createSSEExampleRequest()
 
 
 #STATIC CONTENT
