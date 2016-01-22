@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("pamm").directive("projectsummary", [function () {
+angular.module("pamm").directive("projectSummary", [function () {
     return {
         restrict: "E",
         replace: true,

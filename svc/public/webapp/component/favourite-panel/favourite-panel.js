@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("pamm").directive("favpanel", function () {
+angular.module("pamm").directive("favouritePanel", function () {
     return {
         restrict: "E",
         replace: true,
