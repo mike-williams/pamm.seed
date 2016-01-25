@@ -1,5 +1,5 @@
-NOTE: Seed currently being updated. The core will run but tests are not yet working. We all working to fix.
------------------------------------------------------------------------------------------------------------
+NOTE: Seed currently being updated. The core will run but tests are not yet working. 
+-------------------------------------------------------------------------------------
 
 PAMM - SEED
 -----------
@@ -60,11 +60,11 @@ Index
 
 [**5. Running The Application**](#RunningTheApplication)
 
-1. Architecture ---------------
+1.  Architecture ---------------
 
 The following diagram shows the high level reference architecture for the application: ![](./media/image1.gif)
 
-2. Play Component -----------------
+1.  Play Component -----------------
 
 The Play component of the PAMM seed consists of the following layers:
 
@@ -122,7 +122,7 @@ The default persistence unit for the application is also defined in the applicat
 
 Any entity specific queries should be placed in the Dao associated with that entity. E.g. If the ProjectEntity requires a database query not included in the Generic Dao classes, then a method for that database query should be added to the ProjectDao class.
 
-3. Angular Component --------------------
+1.  Angular Component --------------------
 
 The Angular component of the PAMM seed has been developed in accordance with the Angular team endorsed [Style and Development guidlines.](https://github.com/johnpapa/angular-styleguide)
 
@@ -194,7 +194,7 @@ The states are hierarchical and the template for a child state will be "slotted"
 
 The template associated with the home state will be slotted into the [index.html](./svc/public/webapp/index.html) page where the data-ui-view directive is specified, while the templates associated with the child states (dashboard, project and projectadd) will be slotted into the data-ui-view directive in the [home-index.html](./svc/public/webapp/feature/home/home-index.html) partial)
 
-4. Testing ----------
+1.  Testing ----------
 
 \#\#\# 4.1 Application End To End Testing \#\#\#
 
@@ -368,7 +368,7 @@ The unit tests are placed in the following folder
 
 The [JSONHelperTest.java](svc/test/java/unit/util/json/play/JSONHelperTest.java) provides a simple example of a Junit test.
 
-5. Running the Application ----------
+1.  Running the Application ----------
 
 Open a command window at the PAMM seed root folder and enter the following command
 
