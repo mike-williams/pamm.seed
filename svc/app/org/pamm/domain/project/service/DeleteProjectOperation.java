@@ -17,7 +17,7 @@ public class DeleteProjectOperation {
         this.repository = repository;
     }
 
-    public ServiceResult execute(Integer id) {
+    public ServiceResult execute(final Integer id) {
         final Project project = repository.get(id);
 
         repository.remove(project);

@@ -27,7 +27,7 @@ public class CreateProjectOperation {
         this.emailService = emailService;
     }
 
-    public ServiceResult execute(JsonNode jsonRequest) {
+    public ServiceResult execute(final JsonNode jsonRequest) {
         final Principal principal = (Principal) Http.Context.current().args.get(Principal.class.getName());
         final Project project = Json.fromJson(jsonRequest, Project.class);
 

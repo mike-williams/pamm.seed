@@ -12,7 +12,7 @@ public class JSONHelper {
     private static final Logger.ALogger LOG = Logger.of(JSONHelper.class);
 
 
-    public String getJSONForObject(Object obj) {
+    public String getJSONForObject(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
             final StringWriter sw = new StringWriter();
@@ -25,7 +25,7 @@ public class JSONHelper {
         }
     }
 
-    public <T> T getObjectForJSON(String jsonString, Class<T> clazz) {
+    public <T> T getObjectForJSON(final String jsonString, final Class<T> clazz) {
         try {
             final ObjectMapper mapper = new ObjectMapper();
             final T obj = mapper.readValue(jsonString, clazz);

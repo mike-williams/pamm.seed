@@ -19,7 +19,7 @@ public class SecuredAction extends Action.Simple {
         this.authenticator = authenticator;
     }
 
-    public F.Promise<Result> call(Http.Context ctx) throws Throwable {
+    public F.Promise<Result> call(final Http.Context ctx) throws Throwable {
         final String token = getTokenFromHeader(ctx);
 
         if (token == null) {
@@ -38,7 +38,7 @@ public class SecuredAction extends Action.Simple {
         }
     }
 
-    private String getTokenFromHeader(Http.Context ctx) {
+    private String getTokenFromHeader(final Http.Context ctx) {
         final String[] authTokenHeaderValues = ctx.request().headers().get(Http.HeaderNames.AUTHORIZATION);
         if ((authTokenHeaderValues != null) && (authTokenHeaderValues.length == 1) && (authTokenHeaderValues[0] != null)) {
             return authTokenHeaderValues[0].substring("Bearer ".length());

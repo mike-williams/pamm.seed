@@ -25,7 +25,7 @@ public class ProjectRepository {
         this.projectMapper = projectMapper;
     }
 
-    public Project set(Project project) {
+    public Project set(final Project project) {
         final ProjectEntity newProjectEntity = projectMapper.projectToEntity(project);
 
         emProvider.getEntityManager().persist(newProjectEntity);
@@ -38,7 +38,7 @@ public class ProjectRepository {
         return projectMapper.projectToBusinessObject(newProjectEntity);
     }
 
-    public Project get(Integer projectId) {
+    public Project get(final Integer projectId) {
         return projectMapper.projectToBusinessObject(emProvider.getEntityManager().find(ProjectEntity.class, projectId));
     }
 
@@ -47,7 +47,7 @@ public class ProjectRepository {
         return projectMapper.projectsToBusinessObjectList(projectEntities);
     }
 
-    public Project update(Project project) {
+    public Project update(final Project project) {
         final ProjectEntity projectEntityToUpdate = emProvider.getEntityManager().find(ProjectEntity.class, project.getId());
 
         projectEntityToUpdate.setTitle(project.getTitle());
@@ -81,7 +81,7 @@ public class ProjectRepository {
         return projectMapper.projectToBusinessObject(projectEntityToUpdate);
     }
 
-    public void remove(Project project) {
+    public void remove(final Project project) {
         final ProjectEntity projectToRemove = emProvider.getEntityManager().getReference(ProjectEntity.class, project.getId());
         emProvider.getEntityManager().remove(projectToRemove);
     }

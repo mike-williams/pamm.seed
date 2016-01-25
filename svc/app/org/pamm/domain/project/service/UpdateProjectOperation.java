@@ -24,7 +24,7 @@ public class UpdateProjectOperation {
         this.emailService = emailService;
     }
 
-    public ServiceResult execute(JsonNode jsonRequest) {
+    public ServiceResult execute(final JsonNode jsonRequest) {
         final Project project = Json.fromJson(jsonRequest, Project.class);
         final Project updatedProject = projectRepository.update(project);
 

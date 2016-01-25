@@ -19,7 +19,7 @@ public class ProjectMapper {
         this.repositoryObjectFactory = repositoryObjectFactory;
     }
 
-    public ProjectEntity projectToEntity(Project project) {
+    public ProjectEntity projectToEntity(final Project project) {
         final ProjectEntity projectEntity = new ProjectEntity();
 
         projectEntity.setId(project.getId());
@@ -32,7 +32,7 @@ public class ProjectMapper {
         return projectEntity;
     }
 
-    public ProjectUserEntity projectUserToEntity(ProjectMember projectMember, Project project) {
+    public ProjectUserEntity projectUserToEntity(final ProjectMember projectMember, final Project project) {
         final ProjectUserEntity projectUserEntity = new ProjectUserEntity();
         final ProjectUserId projectUserId = new ProjectUserId();
 
@@ -46,18 +46,16 @@ public class ProjectMapper {
         return projectUserEntity;
     }
 
-    public List<ProjectUserEntity> projectUsersToEntityList(Project project) {
+    public List<ProjectUserEntity> projectUsersToEntityList(final Project project) {
         final List<ProjectUserEntity> projectUserEntities = new ArrayList<>();
-        for (ProjectMember projectMember : project.getMembers()) {
-            projectUserEntities.add(projectUserToEntity(projectMember, project));
-        }
 
+        project.getMembers().forEach(projectMember -> projectUserEntities.add(projectUserToEntity(projectMember, project)));
         projectUserEntities.add(projectUserToEntity(project.getOwner(), project));
 
         return projectUserEntities;
     }
 
-    public ProjectMember projectUserToBusinessObject(ProjectUserEntity userEntity) {
+    public ProjectMember projectUserToBusinessObject(final ProjectUserEntity userEntity) {
         final ProjectMember member = new ProjectMember();
         member.setProjectId(userEntity.getId().projectId);
         member.setUserId(userEntity.getUserId());
@@ -73,16 +71,13 @@ public class ProjectMapper {
         return member;
     }
 
-    public List<Project> projectsToBusinessObjectList(List<ProjectEntity> projectEntities) {
+    public List<Project> projectsToBusinessObjectList(final List<ProjectEntity> projectEntities) {
         final List<Project> projects = new ArrayList<>();
-
-        for (ProjectEntity projectEntity : projectEntities) {
-            projects.add(projectToBusinessObject(projectEntity));
-        }
+        projectEntities.forEach(projectEntity -> projects.add(projectToBusinessObject(projectEntity)));
         return projects;
     }
 
-    public Project projectToBusinessObject(ProjectEntity projectEntity) {
+    public Project projectToBusinessObject(final ProjectEntity projectEntity) {
         final Project project = repositoryObjectFactory.createBusinessObject(projectEntity, Project.class);
         final List<ProjectMember> members = new ArrayList<>();
         for (ProjectUserEntity userEntity : projectEntity.getMembers()) {
