@@ -1,7 +1,8 @@
 "use strict";
 
-/** Regular expression for pattern validation. */
-var $$dataType = {
+"use strict";
+
+angular.module("pamm").constant("dataType", {
     /* Normal surname and forenames */
     NAME: /^[A-Za-z]+$/,
 
@@ -14,11 +15,6 @@ var $$dataType = {
     /** UK national insurance number */
     NI_NUMBER: /^\s*([a-zA-Z]){2}(\s*[0-9]\s*){6}([a-zA-Z]){1}?$/,
 
-    /** Number */
-    NUMBER: /^[0-9]*$/,
-
     //Date in dd/MM/yyyy format only, date validation done in controller
-    DATEFORMAT: /[0-9]{2}-[0-9]{2}-[0-9]{4}/,
-
-    EMAIL: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-};
+    DATEFORMAT: /[0-9]{2}-[0-9]{2}-[0-9]{4}/
+});

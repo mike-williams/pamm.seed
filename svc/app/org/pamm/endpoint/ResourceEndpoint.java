@@ -19,12 +19,16 @@ public abstract class ResourceEndpoint extends Controller {
      * @return http response
      */
     protected Result response(final ServiceResult serviceResult) {
-        if (serviceResult.getStatus() == ServiceResult.Status.SUCCESS) {
-            return ok(serviceResult.getResult());
-        } else {
-            // TODO check other statuses
-
-            return internalServerError();
+        switch (serviceResult.getStatus()) {
+            case SUCCESS: {
+                return ok(serviceResult.getResult());
+            }
+            case UNAUTHORIZED: {
+                return unauthorized();
+            }
+            default: {
+                return internalServerError();
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("pamm").controller("userLoginCtrl", ["$state", "$log", "userContext",
-    function ($state, $log, userContext) {
+angular.module("pamm").controller("userLoginCtrl", ["$state", "$log", "userContext", "httpStatus",
+    function ($state, $log, userContext, httpStatus) {
         var vm = this;
 
         (function init() {
@@ -25,7 +25,7 @@ angular.module("pamm").controller("userLoginCtrl", ["$state", "$log", "userConte
                     },
                     function error(errorResponse) {
                         waitingDialog.close();
-                        if (errorResponse.status == $$http.status.UNAUTHORIZED) {
+                        if (errorResponse.status == httpStatus.UNAUTHORIZED) {
                             vm.hasAuthenticationError = true;
                         } else {
                             $$dialog.error("Service temporary unavailable.  Please try again later");

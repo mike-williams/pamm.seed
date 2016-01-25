@@ -2,7 +2,7 @@ package org.pamm.dal.project;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import org.pamm.domain.RepositoryObjectFactory;
+import org.pamm.dal.RepositoryObjectFactory;
 import org.pamm.domain.project.model.ProjectMember;
 import org.pamm.domain.project.model.Project;
 

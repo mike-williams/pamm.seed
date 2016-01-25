@@ -3,7 +3,7 @@ package org.pamm.dal.user;
 import org.pamm.dal.EntityManagerProvider;
 import org.pamm.dal.project.ProjectMapper;
 import org.pamm.dal.project.ProjectUserEntity;
-import org.pamm.domain.RepositoryObjectFactory;
+import org.pamm.dal.RepositoryObjectFactory;
 import org.pamm.domain.project.model.Project;
 import org.pamm.domain.user.model.User;
 import play.Logger;

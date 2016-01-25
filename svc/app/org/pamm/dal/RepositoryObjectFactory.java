@@ -1,4 +1,4 @@
-package org.pamm.domain;
+package org.pamm.dal;
 
 import org.pamm.infrastructure.util.JSONHelper;
 

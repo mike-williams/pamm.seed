@@ -1,6 +1,6 @@
 // Using injector to locate services to avoid circular dependency on load for $http
-angular.module("pamm").service("authInterceptor", ["$log", "$q", "$injector",
-    function ($log, $q, $injector) {
+angular.module("pamm").service("authInterceptor", ["$log", "$q", "$injector", "httpStatus",
+    function ($log, $q, $injector, httpStatus) {
         return {
             request: function (config) {
                 var token = $injector.get("authService").getToken();
@@ -21,7 +21,7 @@ angular.module("pamm").service("authInterceptor", ["$log", "$q", "$injector",
 
                 // check for expired reason
 
-                if (rejection.status == $$http.status.UNAUTHORIZED) {
+                if (rejection.status == httpStatus.UNAUTHORIZED) {
                     $injector.get("authService").clearContext();
 
                     // check for expiry - if so re-authenticate
@@ -29,7 +29,7 @@ angular.module("pamm").service("authInterceptor", ["$log", "$q", "$injector",
                     if ($state.current.name != "user.login") {
                         $state.go("user.login");
                     }
-                } else if (rejection.status >= $$http.status.INTERNAL_ERROR) {
+                } else if (rejection.status >= httpStatus.INTERNAL_ERROR) {
                     // Pass through to application
                 }
                 return $q.reject(rejection);
