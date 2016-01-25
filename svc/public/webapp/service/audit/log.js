@@ -1,41 +1,59 @@
-angular.module("pamm").decorator("$log", ["$delegate", function ($delegate) {
-
+angular.module("pamm").decorator("$log", ["$delegate", "$injector", function ($delegate, $injector) {
     var log = $delegate.log;
     var info = $delegate.info;
     var debug = $delegate.debug;
     var warn = $delegate.warn;
     var error = $delegate.error;
+    var level = {
+        SEVERE: "SEVERE",
+        ERROR: "ERROR",
+        WARN: "WARNING"
+    };
+    var auditEnabled = false;
+    var logToServer = function (level, message) {
+        if (auditEnabled) {
+            $injector.get("dal").http.POST("audit/", {
+                level: level,
+                message: message
+            });
+        }
+    };
 
-    var audit = function(level, message) {
-        // TODO send to server
+    $delegate.enableAudit = function () {
+        auditEnabled = true;
+    };
+
+    $delegate.disableAudit = function () {
+        auditEnabled = false;
     };
 
     $delegate.log = function (message) {
         log("[LOG] " + message);
-        audit("LOG", message);
     };
 
     $delegate.info = function (message) {
-        info("[DEBUG] " + message);
-        audit("DEBUG", message);
+        info("[INFO] " + message);
     };
 
     $delegate.warn = function (message) {
-        warn("[DEBUG] " + message);
-        audit("DEBUG", message);
+        warn("[WARN] " + message);
+        logToServer(WARN, message);
     };
 
     $delegate.error = function (message) {
-        error("[DEBUG] " + message);
-        audit("DEBUG", message);
+        error("[ERROR] " + message);
+        logToServer(ERROR, message);
+    };
+
+    $delegate.severe = function (message) {
+        error("[SEVERE] " + message);
+        logToServer(SEVERE, message);
     };
 
     $delegate.debug = function (message) {
-
         debug("[DEBUG] " + message);
-        audit("DEBUG", message);
     };
 
-    $delegate.debug("Audit: added logging");
+    $delegate.info("Audit: added logging");
     return $delegate;
 }]);

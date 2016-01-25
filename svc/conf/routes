@@ -24,6 +24,7 @@ GET           /login/user                    org.pamm.endpoint.LoginEndpoint.log
 GET           /sse-connection/:id            org.pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
 POST          /sse-request                   org.pamm.endpoint.SSEEndpoint.createSSEExampleRequest()
 
+POST          /audit                         org.pamm.infrastructure.audit.endpoint.AuditEndpoint.log()
 
 #STATIC CONTENT
 
