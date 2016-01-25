@@ -5,7 +5,7 @@ angular.module("pamm").controller("projectMenuCtrl", ["$log", "userContext", "$s
         var vm = this;
 
         vm.hasSelectedProject = function () {
-            return userContext.getSelectedProject() != undefined;
+            return !!userContext.getSelectedProject();
         };
 
         vm.manageProjects = function () {

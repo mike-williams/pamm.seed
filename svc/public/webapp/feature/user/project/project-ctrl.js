@@ -24,7 +24,7 @@ angular.module("pamm").controller("projectCtrl", ["$log", "$state", "projectRepo
 
         vm.isSelected = function (project) {
             var selectedProject = userContext.getSelectedProject();
-            return (selectedProject != null && selectedProject != undefined && selectedProject.id == project.id);
+            return (!!selectedProject && selectedProject.id == project.id);
         };
 
         vm.owner = function (project) {

@@ -18,7 +18,7 @@ angular.module("pamm").service("cacheManager", ["$log", "$rootScope", "$cacheFac
         })();
 
         this.get = function (cacheId) {
-            if (cache[cacheId] == undefined) {
+            if (!cache[cacheId]) {
                 cache[cacheId] = $cacheFactory(cacheId);
             }
             return cache[cacheId];

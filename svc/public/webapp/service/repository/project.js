@@ -20,7 +20,7 @@ angular.module("pamm").service("projectRepository", ["$q", "$log", "dal",  "$roo
         this.getUserProjects = function (userId) {
             var deferred = $q.defer();
 
-            if (userId == undefined || userId == null) {
+            if (!userId) {
                 var user = userContext.getUser();
                 userId = user.id;
             }

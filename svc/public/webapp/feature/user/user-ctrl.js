@@ -40,6 +40,6 @@ angular.module("pamm").controller("userCtrl", ["$rootScope", "$state", "$log", "
         };
 
         vm.hasSelectedProject = function () {
-            return userContext.getSelectedProject() != undefined;
+            return !userContext.getSelectedProject();
         };
     }]);

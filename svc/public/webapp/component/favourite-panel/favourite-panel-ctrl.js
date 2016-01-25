@@ -8,7 +8,7 @@ angular.module("pamm").controller("favouritePanelCtrl", ["$scope", "$log", "user
 
         vm.isSelected = function (project) {
             var selectedProject = userContext.getSelectedProject();
-            return (selectedProject != null && selectedProject != undefined && selectedProject.id == project.id);
+            return (!!selectedProject && selectedProject.id == project.id);
         };
 
         vm.setAsSelected = function (project) {
