@@ -6,13 +6,13 @@ Table of Content
 - Front-end: Concepts
  - [Application Structure](/docs/frontend/app-structure.md)
  - [Directives](/docs/wip.md)
- - [Feature, Business Process, Components](/docs/features-and-components.md)
+ - [Feature, Business Process, Components](/docs/frontend/features-and-components.md)
  - [Repository](/docs/wip.md)
  - [DAL (HTTP Bridge)](/docs/wip.md)
- - [Context Management](/docs/wip.md)
+ - [Context Management](/docs/context-management.md)
  - [Authentication](/docs/wip.md)
  - [Logging and Audit](/docs/wip.md)
- - [Coding Standard and Naming](/docs/wip.md)
+ - [Coding Standard and Naming](/docs/context.md)
 - Backend: Concepts
  - [Application Structure](/docs/backend-app-structure.md)
  - [Endpoint](/docs/wip.md)
@@ -22,7 +22,7 @@ Table of Content
  - [Audit and Monitoring](/docs/wip.md)
  - [Security](/docs/wip.md)
 - Testing
- - [Approach](/docs/test-approach.md)
+ - [Approach](/docs/wip.md)
  - [Setup](/docs/wip.md)
  - [CucumberJS and Protractor](/docs/wip.md)
  - [Front Unit Test - Jasmine and Karma](/docs/wip.md)

@@ -17,3 +17,17 @@ PAMM is aimed at developing enterprise applications and hence it is heavily focu
 3. System sends activation email
 
 In the agile world this would equate to a story or feature.  In the context of PAMM,  a feature consists of a collection of human and automated tasks.  In other words, a work flow.  Although a business process may contains only automated tasks but as PAMM applications are WEB based, it will always consist of some form of human tasks.
+
+<br/>
+###Feature and Comonent Directory structure###
+<br/>
+<img src="img/features-and-compoents-directory.png" />
+<br/>
+###Read Component Life Cycle###
+<br/>
+<img src="img/read-fsm.png" width="50%" />
+<br/>
+###Read/Write Component Life Cycle###
+<br/>
+<img src="img/read-write-fsm.png"/>
+<br/>
