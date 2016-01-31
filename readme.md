@@ -1,7 +1,5 @@
 PAMM
 =
-Table of Content
--
 - [Architecture](/docs/architecture.md)
 - Front-end: Concepts
  - [Application Structure](/docs/frontend/app-structure.md)
@@ -9,7 +7,7 @@ Table of Content
  - [Feature, Business Process, Components](/docs/frontend/features-and-components.md)
  - [Repository](/docs/wip.md)
  - [DAL (HTTP Bridge)](/docs/wip.md)
- - [Context Management](/docs/context-management.md)
+ - [Context Management](/docs/frontend/context-management.md)
  - [Authentication](/docs/wip.md)
  - [Logging and Audit](/docs/wip.md)
  - [Coding Standard and Naming](/docs/context.md)
