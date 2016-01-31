@@ -1,3 +1,5 @@
-PAMM Architecture
-==
+PAMM: Architecture
+=
+
+![](./img/architecture.png)
 
