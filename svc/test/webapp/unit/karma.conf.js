@@ -31,11 +31,11 @@ module.exports = function (config) {
             "public/webapp/constant/*.js",
 
             <!-- Mocks-->
-            "test/webapp/mocks/service/security/security-manager.js",
-            "test/webapp/mocks/service/security/auth-interceptor.js",
-            "test/webapp/mocks/service/sse/sseConnectionManager.js",
-            "test/webapp/mocks/service/dal/dal.js",
-            "test/webapp/mocks/service/dal/project.js",
+            "test/webapp/mock/service/security/security-manager.js",
+            "test/webapp/mock/service/security/auth-interceptor.js",
+            "test/webapp/mock/service/sse/sseConnectionManager.js",
+            "test/webapp/mock/service/dal/dal.js",
+            "test/webapp/mock/service/dal/project.js",
             "test/webapp/unit/app.js",
 
             <!-- Features being tested -->

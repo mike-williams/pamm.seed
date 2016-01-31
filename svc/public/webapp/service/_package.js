@@ -12,8 +12,5 @@ $$require.script("context/cache.js");
 
 $$require.script("refdata/legal.js");
 
-$$require.script("constant/http.js");
-$$require.script("constant/data-type.js");
-
 $$require.script("security/bearer-token/auth-service.js");
 $$require.script("security/bearer-token/auth-interceptor.js");

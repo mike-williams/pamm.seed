@@ -11,7 +11,7 @@ angular.module("pamm").service("cacheManager", ["$log", "$rootScope", "$cacheFac
         (function init() {
             $rootScope.$on(contextEvent.CLEAR_CONTEXT, function clearContext() {
                 for (var i = 0; i < cache.length; i++) {
-                    cache[i].removeAll();
+                    cache[i].destroy();
                 }
                 $log.info("cacheManager: context cleared");
             })

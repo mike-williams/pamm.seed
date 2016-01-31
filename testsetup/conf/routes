@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /execute-script/:id       controllers.SQLExecutionController.execute(id : Long)
+GET     /execute-script/:id       org.pamm.test.SQLExecutionController
 
 # GET     /execute-file/:id         controllers.FileExecutionController.execute(id : Long)
 

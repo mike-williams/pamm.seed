@@ -9,7 +9,7 @@
     "selenium-stop": "webdriver-manager stop"
   },
   "devDependencies": {
-    "cucumber": "0.7.0",
+    "cucumber": "^0.9.2",
     "jasmine": "^2.3.2",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.11",
@@ -18,7 +18,12 @@
     "karma-html-reporter": "^0.2.6",
     "karma-jasmine": "^0.3.6",
     "protractor": "2.5.1",
+    "protractor-cucumber-framework": "^0.3.3",
     "request": "2.65.0",
-    "request-promise": "^1.0.2"
+    "request-promise": "^1.0.2",
+    "chai": "^2.1.0"
+  },
+  "dependencies": {
+    "cucumber-junit-reporter": "0.0.1"
   }
 }

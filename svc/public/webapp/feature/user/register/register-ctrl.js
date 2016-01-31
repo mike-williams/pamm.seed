@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDao", "cacheManager", "dataType",
-    function ($state, $log, userDao, cacheManager, dataType) {
+angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDao", "cacheManager",
+    function ($state, $log, userDao, cacheManager) {
         var vm = this;
         var REG_CACHE = "userRegisterCtrl";
         var REG_DETAILS = "vm.details";
@@ -9,7 +9,7 @@ angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDa
 
         (function init() {
             vm.registerError = false;
-            vm.$$dataType = dataType;
+            vm.$$dataType = $$dataType;
             vm.details = cacheManager.get(REG_CACHE).get(REG_DETAILS);
             vm.confirm = cacheManager.get(REG_CACHE).get(REG_CONFIRM);
 
