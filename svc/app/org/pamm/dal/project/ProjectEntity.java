@@ -39,7 +39,6 @@ public class ProjectEntity {
     @Column(name = "summary", nullable = false)
     private String summary;
 
-
     @Column(name = "status", nullable = false)
     private String status;
 

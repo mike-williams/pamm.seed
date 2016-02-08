@@ -4,7 +4,6 @@ var request = require('request-promise');
 
 module.exports = (function () {
     function SetupServiceCaller() {
-
     }
 
     SetupServiceCaller.prototype.executeScript = function (scriptNumber) {

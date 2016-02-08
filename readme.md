@@ -3,16 +3,16 @@ PAMM
 - [Architecture](/docs/architecture.md)
 - Front-end: Concepts
  - [Application Structure](/docs/frontend/app-structure.md)
- - [Directives](/docs/wip.md)
+ - [Directives](/docs/frontend/directives.md)
  - [Feature, Business Process, Components](/docs/frontend/features-and-components.md)
  - [Repository](/docs/wip.md)
  - [DAL (HTTP Bridge)](/docs/wip.md)
  - [Context Management](/docs/frontend/context-management.md)
  - [Authentication](/docs/wip.md)
  - [Logging and Audit](/docs/wip.md)
- - [Coding Standard and Naming](/docs/context.md)
+ - [Coding Standard and Naming](/docs/wip.md)
 - Backend: Concepts
- - [Application Structure](/docs/backend-app-structure.md)
+ - [Application Structure](/docs/wip.md)
  - [Endpoint](/docs/wip.md)
  - [Domain Servces and Model](/docs/wip.md)
  - [DAL and Repository](/docs/wip.md)
@@ -31,7 +31,7 @@ PAMM
 
 Overview
 -
-PAMM is an opinionated architecture optimized for data driven applications.  Together with its sister project JAMM (integration TBA) offers a full enterprise stack.  It is important to understand that PAMM is not a framework and there is no API to force developers to code in a certain manner.  What PAMM offers is a ready made architecture that gives a head start for the development of typical digital/WEB applications.
+PAMM is an opinionated architecture optimized for data driven applications.  Together with its sister project, JAMM (integration TBA), offers a full enterprise stack.  It is important to understand that PAMM is not a framework and there is no API to force developers to code in a particular manner.  What PAMM offers is a ready made architecture that gives a head start for the development of typical digital/WEB applications.
 
 The PAMM technology stack comprises of the following technology:
 
@@ -55,7 +55,7 @@ Jasmine,
 Karam,
 JUnit
 
-
+<br/>
 ![](./docs/img/pamm-overview.png)
 <br/>
 <br/>

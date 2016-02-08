@@ -37,17 +37,17 @@ angular.module("pamm").decorator("$log", ["$delegate", "$injector", function ($d
 
     $delegate.warn = function (message) {
         warn("[WARN] " + message);
-        logToServer(WARN, message);
+        logToServer(level.WARN, message);
     };
 
     $delegate.error = function (message) {
         error("[ERROR] " + message);
-        logToServer(ERROR, message);
+        logToServer(level.ERROR, message);
     };
 
     $delegate.severe = function (message) {
         error("[SEVERE] " + message);
-        logToServer(SEVERE, message);
+        logToServer(level.SEVERE, message);
     };
 
     $delegate.debug = function (message) {

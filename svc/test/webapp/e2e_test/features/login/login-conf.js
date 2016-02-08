@@ -1,20 +1,20 @@
+
 exports.config = {
-    seleniumAddress: "http://localhost:4444/wd/hub",
+    seleniumAddress: 'http://localhost:4444/wd/hub',
 
     capabilities: {
-        browserName: "chrome"
+        browserName: 'chrome'
     },
 
     // CHANGE this to test server
     baseUrl: "http://localhost:9000",
 
     params: {
-        profile: "local",
-        testMode: "single"
+        testid: "local"
     },
 
     specs: [
-        "features/**/*.feature"
+        "login.feature"
     ],
 
     onPrepare: function () {
@@ -22,7 +22,7 @@ exports.config = {
         browser.driver.manage().window().setSize(1280, 720);
         global.EC = protractor.ExpectedConditions;
 
-        chai = require("chai");
+        chai = require('chai');
         chaiAsPromised = require("chai-as-promised");
         chai.use(chaiAsPromised);
 
@@ -32,16 +32,15 @@ exports.config = {
     },
 
     // set to "custom" instead of cucumber.
-    framework: "custom",
+    framework: 'custom',
 
     // path relative to the current config file
-    frameworkPath: "../../../../node_modules/protractor-cucumber-framework",
+    frameworkPath: '../../../../../../node_modules/protractor-cucumber-framework',
 
     cucumberOpts: {
         //format: "summary",
         require: [
-            "features/login/project.step.js",
-            "features/project/project.step.js"
+            'login.step.js'
         ]
     }
 };

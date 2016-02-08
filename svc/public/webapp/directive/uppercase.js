@@ -7,7 +7,7 @@ angular.module("pamm").directive("uppercase", function () {
             var uppercase = function (inputValue) {
                 var converted;
                 if (inputValue != undefined) {
-                    converted = inputValue.toupperCase();
+                    converted = inputValue.toUpperCase();
                     if (converted !== inputValue) {
                         ngModel.$setViewValue(converted);
                         ngModel.$render();
