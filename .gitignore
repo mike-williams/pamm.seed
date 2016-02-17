@@ -15,3 +15,4 @@ target/
 testsetup/logs
 testsetup/target
 test-e2e-results
+/design

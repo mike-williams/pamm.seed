@@ -8,7 +8,7 @@ module.exports = function projectTest() {
     var SetupServiceCaller = require("../" + "setup/setup-service-caller.js");
     var setup = new SetupServiceCaller();
 
-    setup.executeScript("journey1.txt");
+    setup.executeScript("delete.sql");
 
     var test = this;
 

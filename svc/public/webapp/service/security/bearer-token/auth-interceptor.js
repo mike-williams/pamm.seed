@@ -22,10 +22,9 @@ angular.module("pamm").service("authInterceptor", ["$log", "$q", "$injector",
                 // check for expired reason
 
                 if (rejection.status == $$httpStatus.UNAUTHORIZED) {
-                    $injector.get("authService").clearContext();
-
                     // check for expiry - if so re-authenticate
 
+                    $injector.get("userContext").logout();
                     if ($state.current.name != "user.login") {
                         $state.go("user.login");
                     }

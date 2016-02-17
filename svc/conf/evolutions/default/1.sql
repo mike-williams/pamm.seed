@@ -15,10 +15,9 @@ CREATE TABLE user (
   activation_key     VARCHAR(255) NOT NULL,
   activation_date    DATE,
   failed_login_count INTEGER      NOT NULL DEFAULT 0,
-  last_access        DATETIME     NOT NULL DEFAULT SYSDATE(),
+  last_access        DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
   role               VARCHAR(10)  NOT NULL,
-  PRIMARY KEY (id),
-  CONSTRAINT ck_user_role CHECK (role IN ('ADMIN', 'USER'))
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE project (
@@ -49,10 +48,9 @@ CREATE TABLE project_user (
 CREATE TABLE issue (
   id         BIGINT(20)    NOT NULL AUTO_INCREMENT,
   text       VARCHAR(1024) NOT NULL,
-  entry_date DATETIME      NOT NULL DEFAULT SYSDATE(),
+  entry_date DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
   user_id    BIGINT(20)    NOT NULL,
   status     VARCHAR(20)   NOT NULL,
-
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES project_user (user_id)
 );
