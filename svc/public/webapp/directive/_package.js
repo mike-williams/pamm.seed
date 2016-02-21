@@ -1,5 +1,5 @@
-$$require.script("match.js");
-$$require.script("lowercase.js");
-$$require.script("uppercase.js");
-$$require.script("before.js");
-$$require.script("autofocus.js");
+$$include.script("match.js");
+$$include.script("lowercase.js");
+$$include.script("uppercase.js");
+$$include.script("before.js");
+$$include.script("autofocus.js");

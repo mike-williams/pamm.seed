@@ -1,6 +1,6 @@
-$$require.script("project-state.js");
-$$require.script("project-ctrl.js");
-$$require.script("project-menu-ctrl.js");
-$$require.script("project-form-ctrl.js");
-$$require.script("member-form-ctrl.js");
-$$require.less("project.less");
+$$include.script("project-state.js");
+$$include.script("project-ctrl.js");
+$$include.script("project-menu-ctrl.js");
+$$include.script("project-form-ctrl.js");
+$$include.script("member-form-ctrl.js");
+$$include.less("project.less");

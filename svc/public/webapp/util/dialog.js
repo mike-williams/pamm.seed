@@ -25,7 +25,9 @@ var $$dialog = {
                 label: 'OK',
                 action: function (dialogWindow) {
                     dialogWindow.close();
-                    closeAction();
+                    if (closeAction) {
+                        closeAction();
+                    }
                 }
             }]
         });

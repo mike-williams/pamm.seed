@@ -1,4 +1,4 @@
-$$require.script("activated-ctrl.js");
-$$require.script("login-ctrl.js");
-$$require.script("login-state.js");
-$$require.less("login.less");
+$$include.script("activated-ctrl.js");
+$$include.script("login-ctrl.js");
+$$include.script("login-state.js");
+$$include.less("login.less");

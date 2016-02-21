@@ -1,3 +1,3 @@
-$$require.script("user-state.js");
-$$require.script("user-ctrl.js");
-$$require.less("user.less");
+$$include.script("user-state.js");
+$$include.script("user-ctrl.js");
+$$include.less("user.less");

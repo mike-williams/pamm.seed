@@ -27,7 +27,7 @@ module.exports = function (config) {
             <!-- app dependencies required to run tests-->
             "public/webapp/service/repository/repository.js",
             "public/webapp/service/repository/project.js",
-            "public/webapp/service/dal/dal.js",
+            "../../../public/webapp/service/repository/dal.js",
             "public/webapp/constant/*.js",
 
             <!-- Mocks-->

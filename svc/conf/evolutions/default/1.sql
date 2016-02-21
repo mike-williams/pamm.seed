@@ -26,11 +26,8 @@ CREATE TABLE project (
   project_code  VARCHAR(20),
   client        VARCHAR(255),
   summary       VARCHAR(255) NOT NULL,
-  sessionStatus VARCHAR(50),
-  owner_user_id BIGINT(20)   NOT NULL,
   status        VARCHAR(20),
-  PRIMARY KEY (id),
-  FOREIGN KEY (owner_user_id) REFERENCES user (id)
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE project_user (
@@ -43,16 +40,6 @@ CREATE TABLE project_user (
   PRIMARY KEY (project_id, user_email),
   FOREIGN KEY (project_id) REFERENCES project (id),
   FOREIGN KEY (user_id) REFERENCES user (id)
-);
-
-CREATE TABLE issue (
-  id         BIGINT(20)    NOT NULL AUTO_INCREMENT,
-  text       VARCHAR(1024) NOT NULL,
-  entry_date DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  user_id    BIGINT(20)    NOT NULL,
-  status     VARCHAR(20)   NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES project_user (user_id)
 );
 
 # --- !Downs

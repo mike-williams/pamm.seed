@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDao", "cacheManager",
-    function ($state, $log, userDao, cacheManager) {
+angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userRepository", "cacheManager",
+    function ($state, $log, userRepository, cacheManager) {
         var vm = this;
         var REG_CACHE = "userRegisterCtrl";
         var REG_DETAILS = "vm.details";
@@ -37,7 +37,7 @@ angular.module("pamm").controller("userRegisterCtrl", ["$state", "$log", "userDa
                     $$dialog.error("Registration is unsuccessful");
                 };
 
-                userDao.register(vm.details).then(successfulRegistration, failedRegistration);
+                userRepository.register(vm.details).then(successfulRegistration, failedRegistration);
             }
         };
 

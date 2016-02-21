@@ -1,2 +1,2 @@
-$$require.script("home-ctrl.js");
-$$require.less("home.less");
+$$include.script("home-ctrl.js");
+$$include.less("home.less");

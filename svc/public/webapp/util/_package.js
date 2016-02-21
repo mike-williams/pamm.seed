@@ -1,3 +1,3 @@
-$$require.script("data-type.js");
-$$require.script("http-statuscode.js");
-$$require.script("dialog.js");
+$$include.script("data-type.js");
+$$include.script("http-statuscode.js");
+$$include.script("dialog.js");

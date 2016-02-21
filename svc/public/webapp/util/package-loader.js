@@ -1,5 +1,5 @@
 "use strict";
-var $$require = (function required() {
+var $$include = (function required() {
     var getRelativeURL = function(script) {
         var path= script.src.split('?')[0]; // remove any query parameters
         return path.split('/').slice(0, -1).join('/')+'/';
