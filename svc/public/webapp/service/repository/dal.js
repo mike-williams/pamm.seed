@@ -29,7 +29,7 @@ angular.module("pamm").service("dal", ["$http", "$q", "$log", function ($http, $
                             "Accept": "application/json, text/plain, */*",
                             "Content-Type": "application/json;charset=UTF-8"
                         },
-                        data: JSON.stringify(itemToSave)
+                        data: angular.toJson(itemToSave)
                     }
                 ).then(function (results) {
                     deferred.resolve(results.data);
@@ -51,7 +51,7 @@ angular.module("pamm").service("dal", ["$http", "$q", "$log", function ($http, $
                             "Accept": "application/json, text/plain, */*",
                             "Content-Type": "application/json;charset=UTF-8"
                         },
-                        data: JSON.stringify(itemToSave)
+                        data: angular.toJson(itemToSave)
                     }
                 ).then(function (results) {
                     deferred.resolve(results.data);
