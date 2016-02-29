@@ -14,21 +14,21 @@ module.exports = function (config) {
 
         files: [
             // Main libriaries dependencies
-            "public/webapp/lib/lodash/lodash.min.js",
-            "public/webapp/lib/jquery/jquery-2.1.4.min.js",
-            "public/webapp/lib/angular-1.4.4/angular.min.js",
-            "public/webapp/lib/ui-router/angular-ui-router.js",
-            "public/webapp/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js",
-            "public/webapp/lib/bootstrap3-dialog/js/bootstrap-dialog.min.js",
+            "public/app/lib/lodash/lodash.min.js",
+            "public/app/lib/jquery/jquery-2.1.4.min.js",
+            "public/app/lib/angular-1.4.4/angular.min.js",
+            "public/app/lib/ui-router/angular-ui-router.js",
+            "public/app/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js",
+            "public/app/lib/bootstrap3-dialog/js/bootstrap-dialog.min.js",
 
             <!-- Test Libraries (note angular-mocks.js needs to be loaded after real angular) -->
             "test/webapp/unit/lib/angular-1.4.4/angular-mocks.js",
 
             <!-- app dependencies required to run tests-->
-            "public/webapp/service/repository/repository.js",
-            "public/webapp/service/repository/project.js",
+            "public/app/service/repository/repository.js",
+            "public/app/service/repository/project.js",
             "../../../public/webapp/service/repository/dal.js",
-            "public/webapp/constant/*.js",
+            "public/app/constant/*.js",
 
             <!-- Mocks-->
             "test/webapp/mock/service/security/security-manager.js",

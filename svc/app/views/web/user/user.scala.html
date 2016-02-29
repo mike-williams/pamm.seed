@@ -1,0 +1,33 @@
+@(sideMenu: Html)(feature: Html)
+@web.index {
+    <div class="container" data-ng-controller="userCtrl as u">
+        <header class="row">
+            <div class="app-logo pull-left"></div>
+            <div class="app-bar pull-right">
+                <span class="hidden-xs"><i class="fa fa-user"></i>{{u.user.forename}} {{u.user.surname}}&nbsp;|</span>
+                <a class="hidden-xs" data-ng-click="u.logout()" title="Logout of the application"><i class="fa fa-power-off"></i>
+                    Sign Out</a>
+                <a class="hidden-xs"><i class="fa fa-question"></i>Help</a>
+                <a class="hidden-xs" data-ng-click="u.showAbout()"><i class="fa fa-info"></i>About</a>
+            </div>
+
+            <nav>
+                <ul class="nav nav-tabs">
+                    <li class="@flash.get("tab.home")">
+                        <a data-ng-click="u.navigateToHome()" href="/app/home"><i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="@flash.get("tab.project")">
+                        <a data-ng-click="u.navigateToProjects()" href="/app/project">Projects</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="row">
+            <aside class="col-md-3 col-sm-4">
+                <div data-ui-view="sidebar-menu">@sideMenu</div>
+            </aside>
+            <main data-ui-view="feature" class="col-md-9 col-sm-8 col-xs-12 container">@feature</main>
+        </div>
+    </div>
+}

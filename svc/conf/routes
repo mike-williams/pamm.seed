@@ -5,31 +5,36 @@
 
 # ~~~~
 
-# DYNAMIC CONTENT
+# REST
+GET           /project                       pamm.endpoint.ProjectsEndpoint.list()
+GET           /project/:id                   pamm.endpoint.ProjectsEndpoint.find(id: Integer)
+POST          /project                       pamm.endpoint.ProjectsEndpoint.create()
+PUT           /project                       pamm.endpoint.ProjectsEndpoint.update()
+DELETE        /project/:id                   pamm.endpoint.ProjectsEndpoint.delete(id: Integer)
 
-GET           /project                       org.pamm.endpoint.ProjectsEndpoint.list()
-GET           /project/:id                   org.pamm.endpoint.ProjectsEndpoint.find(id: Integer)
-POST          /project                       org.pamm.endpoint.ProjectsEndpoint.create()
-PUT           /project                       org.pamm.endpoint.ProjectsEndpoint.update()
-DELETE        /project/:id                   org.pamm.endpoint.ProjectsEndpoint.delete(id: Integer)
+GET           /user/:id/project              pamm.endpoint.UserEndpoint.findProjects(id: Integer)
+GET           /user/:id/activate/:key        pamm.endpoint.ActivateEndpoint.activate(id: Integer, key: String)
 
-GET           /user/:id/project              org.pamm.endpoint.UserEndpoint.findProjects(id: Integer)
-GET           /user/:id/activate/:key        org.pamm.endpoint.ActivateEndpoint.activate(id: Integer, key: String)
+POST          /register/user                 pamm.endpoint.RegisterEndpoint.register()
 
-POST          /register/user                 org.pamm.endpoint.RegisterEndpoint.register()
+GET           /login/user                    pamm.endpoint.LoginEndpoint.login()
 
-GET           /login/user                    org.pamm.endpoint.LoginEndpoint.login()
+GET           /sse-connection/:id            pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
+POST          /sse-request                   pamm.endpoint.SSEEndpoint.createSSEExampleRequest()
+
+POST          /audit                         pamm.infrastructure.audit.endpoint.AuditEndpoint.log()
 
 
-GET           /sse-connection/:id            org.pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
-POST          /sse-request                   org.pamm.endpoint.SSEEndpoint.createSSEExampleRequest()
-
-POST          /audit                         org.pamm.infrastructure.audit.endpoint.AuditEndpoint.log()
+# DYNAMIC CONTENT for Non JS
+GET           /app                           controllers.LoginController.index()
+POST          /app                           controllers.LoginController.login()
+GET           /app/home                      controllers.HomeController.index()
+GET           /app/project                   controllers.ProjectController.index()
 
 #STATIC CONTENT
 
 # Home page
-GET           /                              controllers.Assets.at(path="/public/webapp", file="index.html")
+GET           /                              controllers.Assets.at(path="/public", file="index.html")
 
 # Map static resources from the /public folder to the /assets URL path
-GET           /*file                         controllers.Assets.versioned(path="/public/webapp", file: Asset)
+GET           /*file                         controllers.Assets.versioned(path="/public", file: Asset)

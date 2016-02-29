@@ -1,0 +1,34 @@
+@import pamm.domain.project.model.Project
+@(projects: List[Project])(projectMenu: Html)
+@web.user.user(projectMenu) {
+    <div data-ng-controller="projectCtrl as p">
+        <h1>Manage Projects</h1>
+        @for(project <- projects) {
+            <div data-ng-repeat="project in p.projects | orderBy:'title' track by $index" class="panel panel-default">
+                <div class="panel-heading heading">
+                    <div class="pull-left" role="group" aria-label="Project options">
+                        <a data-ng-class="p.isSelected(project)?'fa fa-circle':'fa fa-circle-o'"
+                        title="Anchor project" data-ng-click="p.setAsSelected(project)"></a>
+                    </div>
+                    <div class="btn-group pull-right" role="group" aria-label="Project options">
+                        <button class="btn btn-default btn-xs" title="Amend this project" data-ng-click="p.edit(project)">
+                        Amend&nbsp;<i class="fa fa-pencil"></i>
+                    </button>
+                    </div>
+                    <span>@project.getProjectCode : @project.getTitle</span>
+                    <span title="Owner of this project">Owner: @project.getOwner.getEmail</span>
+                </div>
+                <div class="panel-body">
+                    <p>Client: {{project.client == null ? "N/A" : project.client}}</p>
+                    <p>Summary: @project.getSummary</p>
+                </div>
+            </div>
+        }
+
+        @if(projects.isEmpty) {
+            <div data-ng-show="p.projects.length==0 && !p.waiting" class="alert alert-info">
+                <i class="fa fa-info-circle"></i>&nbsp;You do not have any projects
+            </div>
+        }
+    </div>
+}

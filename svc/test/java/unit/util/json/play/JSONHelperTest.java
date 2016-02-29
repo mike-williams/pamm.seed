@@ -54,8 +54,8 @@ public class JSONHelperTest
     public void testCreateJSONErrorMessageWithPreviousMessage()
     {
         JSONHelper jsonHelper = new JSONHelper();
-        String previousJSONObject = "{\"test\": \"testvalue\"}";
-        String testObject = "{\"test\": \"testvalue\", \"returnCode\": \"1\", \"errorReason\": \"value\", \"errorMessage\": \"value\"}";
+        String previousJSONObject = "{\"login\": \"testvalue\"}";
+        String testObject = "{\"login\": \"testvalue\", \"returnCode\": \"1\", \"errorReason\": \"value\", \"errorMessage\": \"value\"}";
         String returnString = jsonHelper.createJSONErrorMessage(previousJSONObject, 1, "value", "value");
         Assert.assertEquals(testObject, returnString);
     }
