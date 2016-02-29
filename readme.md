@@ -33,7 +33,7 @@ Overview
 -
 PAMM is an opinionated architecture optimized for data driven applications.  Together with its sister project, JAMM (integration TBA), offers a full enterprise stack.  It is important to understand that PAMM is not a framework and there is no API to force developers to code in a particular manner.  What PAMM offers is a ready made architecture that gives a head start for the development of typical digital/WEB applications.
 
-The PAMM technology stack comprises of the following technology:
+The PAMM technology stack comprises of the following technologies:
 
 - **Core:**
 AngularJS,
