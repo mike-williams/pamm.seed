@@ -9,6 +9,7 @@ lazy val root = (project in file("."))
 
 lazy val svc = (project in file("svc"))
   .enablePlugins(PlayJava)
+  .settings(PlayKeys.externalizeResources := false)
   .settings(includeFilter in(Assets, LessKeys.less) := "*.less")
   .settings(clientTest := clientTestTask)
   .settings(endToEndTest := endToEndTestTask)
@@ -18,8 +19,8 @@ lazy val svc = (project in file("svc"))
   .settings(Settings.basicSettings: _*)
   .settings(Settings.serviceSettings: _*)
   .settings(libraryDependencies ++= Seq(
-    javaJpa,
     hibernate,
+    javaJpa,
     cache,
     javaWs,
     evolutions,
@@ -51,5 +52,6 @@ lazy val testsetup = (project in file("testsetup"))
 ivyScala := ivyScala.value map {
   _.copy(overrideScalaVersion = true)
 }
+
 
 fork in run := true
