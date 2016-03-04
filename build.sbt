@@ -24,6 +24,7 @@ lazy val svc = (project in file("svc"))
     javaWs,
     evolutions,
     jdbc,
+    filters,
     "com.typesafe.play" %% "play-mailer" % "3.0.1",
     "io.jsonwebtoken" % "jjwt" % "0.6.0"
   ) ++ Lib.test(
