@@ -21,7 +21,9 @@
     "protractor-cucumber-framework": "^0.3.3",
     "request": "2.65.0",
     "request-promise": "^1.0.2",
-    "chai": "^2.1.0"
+    "chai": "^2.1.0",
+    "chai-as-promised":"^5.2.0"
+
   },
   "dependencies": {
     "cucumber-junit-reporter": "0.0.1"

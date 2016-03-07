@@ -23,18 +23,28 @@ public class Dao {
         this.appRootHelper = appRootHelper;
     }
 
-    public final String executeQuery(final String script) {
-        final String sqlFilePath = appRootHelper.getApplicationRootPath() + File.separatorChar + script;
-
+    public final String executeUpdate(final String script) {
+        final String sqlFilePath = appRootHelper.getApplicationRootPath() + File.separatorChar + "test-script" + File.separatorChar + script;
         LOG.info("SQL File Path: " + sqlFilePath);
-
         try {
-            final String sqlString;
-            sqlString = sqlReader.readFile(sqlFilePath);
+            final String sqlString = sqlReader.readFile(sqlFilePath);
             emp.getEntityManager().createNativeQuery(sqlString).executeUpdate();
-            return "Query executed succesfully";
+            return "Query executed successfully";
         } catch (Exception e) {
-            return "Error reading SQL file " + sqlFilePath + " -> exception: " + e.getMessage();
+            return e.getMessage();
         }
     }
+
+    public final String executeQuery(final String script) {
+        final String sqlFilePath = appRootHelper.getApplicationRootPath() + File.separatorChar + "test-script" + File.separatorChar + script;
+        LOG.info("SQL File Path: " + sqlFilePath);
+        try {
+            final String sqlString = sqlReader.readFile(sqlFilePath);
+            return emp.getEntityManager().createNativeQuery(sqlString).getSingleResult().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+    }
+
 }

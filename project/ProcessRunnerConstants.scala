@@ -18,7 +18,7 @@ object ProcessRunnerConstants {
   
   val LINUX_SCRIPTS_EXTENSION = ".sh"
 
-  val LOCAL_ADDRESS = "0.0.0.0:"
+  val LOCAL_ADDRESS = ":"
 
   val OPERATING_SYSTEM = System.getProperty("os.name")
 
@@ -35,6 +35,10 @@ object ProcessRunnerConstants {
   val PROTRACTOR_TEST_SCRIPT = "runProtractorTests"
 
   val OUTPUT_LOG_SUFFIX = "Output.log"
+
+  val PROCESS_ERROR_STRING = "Process exited with error code"
+
+  val ERROR_CODE_INDEX_STRING = "code"
 
   def getScriptExtension(): String = {
     if (OPERATING_SYSTEM.contains(ProcessRunnerConstants.WINDOWS_OS)) WINDOWS_SCRIPT_EXTENSION else LINUX_SCRIPTS_EXTENSION

@@ -9,6 +9,18 @@ lazy val root = (project in file("."))
 
 lazy val svc = (project in file("svc"))
   .enablePlugins(PlayJava)
+
+  .settings(jacoco.settings)
+  .settings(
+    Keys.fork in jacoco.Config := true)
+  .settings(parallelExecution in jacoco.Config := false)
+  .settings(jacoco.outputDirectory in jacoco.Config := file(baseDirectory.value.getAbsolutePath + "/target/jacoco"))
+  .settings(jacoco.excludes in jacoco.Config := Seq("views*", "router*", "controllers*", "controllers*javascript*", "view.html*"))
+
+  .settings(checkProcesses:= checkProcessesTask)
+  .settings(stopProcesses:= stopProcessesTask)
+  .settings(endToEndTestProtractorCI:= endToEndTestProtractorCITask)
+
   .settings(PlayKeys.externalizeResources := false)
   .settings(includeFilter in(Assets, LessKeys.less) := "*.less")
   .settings(clientTest := clientTestTask)

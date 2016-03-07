@@ -19,23 +19,35 @@ public class SQLExecutionController extends Controller
         this.dao = dao;
     }
 
-    @Transactional public Result execute(String testScriptName)
+    @Transactional public Result update(String testScriptName)
     {
-        logger.info("executing script SQLExecutionController id: " + testScriptName);
-
-        String returnValue = null;
-
         try
         {
-            returnValue = dao.executeQuery(testScriptName);
+            logger.info("executing update script: " + testScriptName);
+            return ok(dao.executeUpdate(testScriptName));
         }
         catch (Exception e)
         {
             logger.info("Exception executing query - " + e.getMessage());
+            return internalServerError(e.getMessage());
         }
 
-        logger.info("executed script SQLExecutionController return value: " + returnValue);
 
-        return ok(returnValue);
     }
+
+    @Transactional public Result query(String testScriptName)
+    {
+        try
+        {
+            logger.info("executing query script: " + testScriptName);
+            return ok(dao.executeQuery(testScriptName));
+        }
+        catch (Exception e)
+        {
+            logger.info("Exception executing query - " + e.getMessage());
+            return internalServerError(e.getMessage());
+        }
+
+    }
+
 }

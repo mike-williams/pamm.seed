@@ -2,7 +2,8 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET     /execute-script/:scriptName       controllers.SQLExecutionController.execute(scriptName : String)
+GET     /update/:scriptName       controllers.SQLExecutionController.update(scriptName : String)
+GET     /query/:scriptName       controllers.SQLExecutionController.query(scriptName : String)
 
 # GET     /execute-file/:id         controllers.FileExecutionController.execute(id : Long)
 
