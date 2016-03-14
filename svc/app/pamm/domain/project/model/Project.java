@@ -1,16 +1,29 @@
 package pamm.domain.project.model;
 
+import play.data.validation.Constraints;
+
+import javax.validation.Constraint;
 import java.util.List;
 import java.util.Objects;
 
 public class Project {
     private Integer id;
+
+    @Constraints.Required
     private String title;
+
+    @Constraints.Required
     private String projectCode;
+
     private String client;
+
+    @Constraints.Required
     private String summary;
+
     private String status;
+
     private ProjectMember owner;
+
     private List<ProjectMember> members;
 
     public Integer getId() {

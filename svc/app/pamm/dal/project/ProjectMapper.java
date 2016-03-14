@@ -49,8 +49,11 @@ public class ProjectMapper {
     public List<ProjectUserEntity> projectUsersToEntityList(final Project project) {
         final List<ProjectUserEntity> projectUserEntities = new ArrayList<>();
 
-        project.getMembers().forEach(projectMember -> projectUserEntities.add(projectUserToEntity(projectMember, project)));
-        projectUserEntities.add(projectUserToEntity(project.getOwner(), project));
+        if(project.getMembers() != null)
+        {
+            project.getMembers().forEach(projectMember -> projectUserEntities.add(projectUserToEntity(projectMember, project)));
+            projectUserEntities.add(projectUserToEntity(project.getOwner(), project));
+        }
 
         return projectUserEntities;
     }

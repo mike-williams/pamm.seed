@@ -30,6 +30,9 @@ GET           /app                           controllers.LoginController.index()
 POST          /app                           controllers.LoginController.login()
 GET           /app/home                      controllers.HomeController.index()
 GET           /app/project                   controllers.ProjectController.index()
+GET           /app/project/add               controllers.ProjectController.getCreateProject()
+POST          /app/project/add               controllers.ProjectController.postCreateProject()
+GET           /app/project/add/member        controllers.ProjectController.getCreateProjectMember()
 
 #STATIC CONTENT
 

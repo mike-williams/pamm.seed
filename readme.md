@@ -1,6 +1,9 @@
 PAMM
 =
-- [Architecture](/docs/architecture.md)
+- Getting Started
+ - [Running The Application](/docs/getting-started.md)
+- Architecture
+ - [Architecture](/docs/architecture.md)
 - Front-end: Concepts
  - [Application Structure](/docs/frontend/app-structure.md)
  - [Directives](/docs/frontend/directives.md)

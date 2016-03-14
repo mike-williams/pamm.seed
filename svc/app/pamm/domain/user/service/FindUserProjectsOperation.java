@@ -22,6 +22,7 @@ public class FindUserProjectsOperation {
     public ServiceResult execute(final Integer userId) {
         final List<Project> projects = repository.findProjectsForUser(userId);
         final ServiceResult serviceResult = new ServiceResult(Json.toJson(projects));
+
         serviceResult.setRawResult(projects);
         return serviceResult;
     }

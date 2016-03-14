@@ -1,1 +1,12 @@
-This is the project menu
+<div class="side-menu">
+    <ul data-ng-controller="projectMenuCtrl as p">
+        <li>
+            <a href="@routes.ProjectController.index()">Manage projects</a>
+            <div>Manage your projects</div>
+        </li>
+        <li>
+      <a href="@routes.ProjectController.getCreateProject()">New Top Level Project</a>
+            <div>Create a top level project</div>
+        </li>
+    </ul>
+</div>
