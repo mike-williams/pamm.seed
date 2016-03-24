@@ -1,1 +1,1 @@
-angular.module('app', ["ui.router", "dal", "repository", "securityManager", "util", "sse"]);
+angular.module('pamm', ["ui.router", "ngMessages"]);

@@ -5,44 +5,31 @@ module.exports = function (config) {
         basePath: '../../../',
 
         preprocessors: {
-            "public/webapp/feature/**/*.js": ['coverage'],
-            "public/webapp/service/**/*.js": ['coverage'],
-            "public/webapp/constant/**/*.js": ['coverage'],
-            "public/webapp/directive/**/*.js": ['coverage'],
-            "public/webapp/*.js": ['coverage']
+            "public/feature/**/*.js": ['coverage'],
+            "public/service/**/*.js": ['coverage'],
+            "public/constant/**/*.js": ['coverage'],
+            "public/directive/**/*.js": ['coverage'],
+            "public/*.js": ['coverage']
         },
 
         files: [
-            // Main libriaries dependencies
-            "public/app/lib/lodash/lodash.min.js",
-            "public/app/lib/jquery/jquery-2.1.4.min.js",
-            "public/app/lib/angular-1.4.4/angular.min.js",
-            "public/app/lib/ui-router/angular-ui-router.js",
-            "public/app/lib/bootstrap-3.3.5-dist/js/bootstrap.min.js",
-            "public/app/lib/bootstrap3-dialog/js/bootstrap-dialog.min.js",
+            "public/lib/lodash/lodash.min.js",
+            "public/lib/jquery/jquery.min.js",
+            "public/lib/angular/angular.min.js",
+            "public/lib/angular/angular-messages.min.js",
+            "public/lib/angular/angular-animate.min.js",
+            "public/lib/angular-ui/angular-ui-router.min.js",
+            "public/lib/angular-ui/ui-bootstrap-tpls.min.js",
+            "public/lib/bootstrap/js/bootstrap.min.js",
+            "public/lib/bootstrap3-dialog/js/bootstrap-dialog.min.js",
+            "public/lib/angular-google-chart/ng-google-chart.min.js",
 
-            <!-- Test Libraries (note angular-mocks.js needs to be loaded after real angular) -->
-            "test/webapp/unit/lib/angular-1.4.4/angular-mocks.js",
-
-            <!-- app dependencies required to run tests-->
-            "public/app/service/repository/repository.js",
-            "public/app/service/repository/project.js",
-            "../../../public/webapp/service/repository/dal.js",
-            "public/app/constant/*.js",
-
-            <!-- Mocks-->
-            "test/webapp/mock/service/security/security-manager.js",
-            "test/webapp/mock/service/security/auth-interceptor.js",
-            "test/webapp/mock/service/sse/sseConnectionManager.js",
-            "test/webapp/mock/service/dal/dal.js",
-            "test/webapp/mock/service/dal/project.js",
             "test/webapp/unit/app.js",
 
-            <!-- Features being tested -->
-            {pattern: 'public/webapp/feature/**/*.js'},
-            {pattern: 'public/webapp/service/**/*.js'},
-            {pattern: 'test/webapp/unit/feature/**/*.spec.js'},
-            {pattern: 'test/webapp/unit/service/**/*.spec.js'}
+            <!-- feature being tested -->
+            "public/service/repository/dal.js",
+
+            {pattern: 'src/test/webapp/service/**/*.spec.js'}
 
         ],
         // list of files to exclude
