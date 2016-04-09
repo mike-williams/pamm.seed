@@ -21,11 +21,7 @@ public class User {
 
     private String phone;
 
-    private Boolean activated;
-
     private Role role;
-
-    private String activationKey;
 
     private Date activationDate;
 
@@ -95,22 +91,6 @@ public class User {
         this.phone = phone;
     }
 
-    public Boolean isActivated() {
-        return activated;
-    }
-
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
-    }
-
-    public String getActivationKey() {
-        return activationKey;
-    }
-
-    public void setActivationKey(String activationKey) {
-        this.activationKey = activationKey;
-    }
-
     public Date getActivationDate() {
         return activationDate;
     }
@@ -139,15 +119,13 @@ public class User {
                 Objects.equals(jobTitle, user.jobTitle) &&
                 Objects.equals(baseSite, user.baseSite) &&
                 Objects.equals(phone, user.phone) &&
-                Objects.equals(activated, user.activated) &&
                 role == user.role &&
-                Objects.equals(activationKey, user.activationKey) &&
                 Objects.equals(activationDate, user.activationDate) &&
                 Objects.equals(id, user.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, forename, surname, password, jobTitle, baseSite, phone, activated, role, activationKey, activationDate, id);
+        return Objects.hash(email, forename, surname, password, jobTitle, baseSite, phone, role, activationDate, id);
     }
 }

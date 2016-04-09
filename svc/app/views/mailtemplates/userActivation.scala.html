@@ -1,5 +1,5 @@
 @import pamm.domain.user.model.User
-@(user: User, baseUrl: String)
+@(user: User, baseUrl: String, token: String)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
             Your account has been created, please click on the URL below to activate it:
         </p>
         <p>
-            <a href="@baseUrl/user/@user.getId/activate/@user.getActivationKey">Activation Link</a>
+            <a href="@baseUrl/user/@user.getId/activate/@token">Activation Link</a>
         </p>
         <p>
             <span>Regards, </span>

@@ -1,21 +1,21 @@
 package pamm.infrastructure.security.endpoint;
 
 import com.google.inject.Inject;
+import pamm.infrastructure.security.authentication.Principal;
 import pamm.infrastructure.security.authentication.TokenStatus;
+import pamm.infrastructure.security.authentication.UserAuthenticator;
 import play.libs.F;
 import play.mvc.Action;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
-import pamm.infrastructure.security.authentication.Authenticator;
-import pamm.infrastructure.security.authentication.Principal;
 
 public class RestSecuredAction extends Action.Simple {
 
-    private final Authenticator authenticator;
+    private final UserAuthenticator authenticator;
 
     @Inject
-    public RestSecuredAction(Authenticator authenticator) {
+    public RestSecuredAction(UserAuthenticator authenticator) {
         this.authenticator = authenticator;
     }
 

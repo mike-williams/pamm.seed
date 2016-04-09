@@ -58,7 +58,7 @@ public class UserService {
         return registerUserOperation.execute(jsonResource);
     }
 
-    public ServiceResult activate(final Integer userId, final String activationCode) {
-        return activateUserOperation.execute(userId, activationCode);
+    public ServiceResult activate(final String activationCode) {
+        return activateUserOperation.execute(activationCode);
     }
 }

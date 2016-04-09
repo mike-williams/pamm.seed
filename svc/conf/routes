@@ -6,18 +6,18 @@
 # ~~~~
 
 # REST
-GET           /project                       pamm.endpoint.ProjectsEndpoint.list()
-GET           /project/:id                   pamm.endpoint.ProjectsEndpoint.find(id: Integer)
-POST          /project                       pamm.endpoint.ProjectsEndpoint.create()
-PUT           /project                       pamm.endpoint.ProjectsEndpoint.update()
-DELETE        /project/:id                   pamm.endpoint.ProjectsEndpoint.delete(id: Integer)
+GET           /project                       pamm.endpoint.user.ProjectsEndpoint.list()
+GET           /project/:id                   pamm.endpoint.user.ProjectsEndpoint.find(id: Integer)
+POST          /project                       pamm.endpoint.user.ProjectsEndpoint.create()
+PUT           /project                       pamm.endpoint.user.ProjectsEndpoint.update()
+DELETE        /project/:id                   pamm.endpoint.user.ProjectsEndpoint.delete(id: Integer)
 
-GET           /user/:id/project              pamm.endpoint.UserEndpoint.findProjects(id: Integer)
-GET           /user/:id/activate/:key        pamm.endpoint.ActivateEndpoint.activate(id: Integer, key: String)
+GET           /user/:id/project              pamm.endpoint.user.UserEndpoint.findProjects(id: Integer)
+GET           /user/:id/activate/:key        pamm.endpoint.user.ActivateEndpoint.activate(id: Integer, key: String)
 
-POST          /register/user                 pamm.endpoint.RegisterEndpoint.register()
+POST          /register/user                 pamm.endpoint.user.RegisterEndpoint.register()
 
-GET           /login/user                    pamm.endpoint.LoginEndpoint.login()
+GET           /login/user                    pamm.endpoint.user.LoginEndpoint.login()
 
 GET           /sse-connection/:id            pamm.endpoint.SSEEndpoint.createSSEConnection(id: String)
 POST          /sse-request                   pamm.endpoint.SSEEndpoint.createSSEExampleRequest()

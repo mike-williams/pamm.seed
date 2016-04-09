@@ -11,8 +11,6 @@ CREATE TABLE user (
   job_title          VARCHAR(20),
   base_site          VARCHAR(20),
   phone              VARCHAR(20),
-  activated          BOOLEAN      NOT NULL DEFAULT FALSE,
-  activation_key     VARCHAR(255) NOT NULL,
   activation_date    DATE,
   failed_login_count INTEGER      NOT NULL DEFAULT 0,
   last_access        DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,

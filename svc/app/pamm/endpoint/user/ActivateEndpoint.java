@@ -1,4 +1,4 @@
-package pamm.endpoint;
+package pamm.endpoint.user;
 
 import pamm.domain.ServiceResult;
 import pamm.domain.user.service.UserService;
@@ -23,7 +23,7 @@ public class ActivateEndpoint extends Controller {
 
     @Transactional
     public Result activate(final Integer userId, final String activateString) {
-        final ServiceResult serviceResult = userService.activate(userId, activateString);
+        final ServiceResult serviceResult = userService.activate(activateString);
         if (serviceResult.getStatus().equals(ServiceResult.Status.OP_ERROR)) {
             return badRequest();
         } else {

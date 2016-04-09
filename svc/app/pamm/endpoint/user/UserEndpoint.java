@@ -1,6 +1,7 @@
-package pamm.endpoint;
+package pamm.endpoint.user;
 
 import pamm.domain.user.service.UserService;
+import pamm.endpoint.ResourceEndpoint;
 import play.Logger;
 import play.db.jpa.Transactional;
 import play.mvc.Result;

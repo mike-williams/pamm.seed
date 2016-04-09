@@ -99,9 +99,7 @@ public class UserRepository {
     public void activate(User user) {
         final UserEntity userEntity = emProvider.getEntityManager().find(UserEntity.class, user.getId());
 
-        userEntity.setActivated(true);
         userEntity.setActivationDate(new Date());
-
         emProvider.getEntityManager().merge(userEntity);
     }
 }

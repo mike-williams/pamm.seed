@@ -5,8 +5,8 @@ import pamm.dal.user.UserRepository;
 import pamm.domain.ServiceResult;
 import pamm.domain.user.model.User;
 import pamm.infrastructure.mail.EmailService;
+import pamm.infrastructure.security.authentication.UserAuthenticator;
 import pamm.infrastructure.security.cipher.BCryptCipher;
-import pamm.infrastructure.util.RandomKeyGenerator;
 import pamm.infrastructure.util.RequestUtil;
 import play.Logger;
 import play.libs.Json;
@@ -18,39 +18,38 @@ public class RegisterUserOperation {
 
     private final UserRepository repository;
     private final BCryptCipher cipher;
-    private final RandomKeyGenerator randomKeyGenerator;
     private final EmailService emailService;
     private final RequestUtil requestUtil;
+    private final UserAuthenticator authenticator;
+
 
     @Inject
     public RegisterUserOperation(UserRepository repository,
                                  BCryptCipher cipher,
-                                 RandomKeyGenerator randomKeyGenerator,
+                                 UserAuthenticator authenticator,
                                  EmailService emailService,
                                  RequestUtil requestUtil) {
         this.repository = repository;
         this.cipher = cipher;
-        this.randomKeyGenerator = randomKeyGenerator;
         this.emailService = emailService;
         this.requestUtil = requestUtil;
+        this.authenticator = authenticator;
     }
 
     public ServiceResult execute(JsonNode jsonRequest) {
-        final User existingUser = repository.findUserByEmail(jsonRequest.findPath("email").textValue());
-        if (existingUser != null) {
+        if (repository.findUserByEmail(jsonRequest.findPath("email").textValue()) != null) {
             return new ServiceResult(ServiceResult.Status.OP_ERROR);
         } else {
             final User user = Json.fromJson(jsonRequest, User.class);
-
-            user.setPassword(cipher.hash(jsonRequest.findPath("password").textValue()));
-            user.setActivated(false);
-            user.setActivationKey(randomKeyGenerator.generate());
             user.setRole(User.Role.USER);
 
+            user.setPassword(cipher.hash(jsonRequest.findPath("password").textValue()));
             repository.set(user);
 
-            emailService.sendEmail(user.getEmail(), "Please activate your account",
-                    views.html.mailtemplates.userActivation.render(user, requestUtil.getBaseUrl()).toString());
+            final String token = authenticator.generateJwtTokenForUser(user);
+
+            emailService.sendEmail(user.getEmail(), "Welcome to Pamm. Please activate your account",
+                    views.html.mailtemplates.userActivation.render(user, requestUtil.getBaseUrl(), token).toString());
 
             return new ServiceResult(jsonRequest);
         }

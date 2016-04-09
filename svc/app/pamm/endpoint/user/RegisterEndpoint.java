@@ -1,4 +1,4 @@
-package pamm.endpoint;
+package pamm.endpoint.user;
 
 import pamm.domain.ServiceResult;
 import pamm.domain.user.service.UserService;

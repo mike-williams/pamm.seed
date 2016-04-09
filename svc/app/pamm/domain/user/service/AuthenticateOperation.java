@@ -3,7 +3,7 @@ package pamm.domain.user.service;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.jsonwebtoken.Claims;
 import pamm.domain.ServiceResult;
-import pamm.infrastructure.security.authentication.Authenticator;
+import pamm.infrastructure.security.authentication.UserAuthenticator;
 import pamm.infrastructure.security.authentication.Principal;
 import play.Logger;
 import play.libs.Json;
@@ -13,10 +13,10 @@ import javax.inject.Inject;
 public class AuthenticateOperation {
     private static final Logger.ALogger LOG = Logger.of(AuthenticateOperation.class);
 
-    private final Authenticator authenticator;
+    private final UserAuthenticator authenticator;
 
     @Inject
-    public AuthenticateOperation(Authenticator authenticator) {
+    public AuthenticateOperation(UserAuthenticator authenticator) {
         this.authenticator = authenticator;
     }
 
@@ -37,10 +37,7 @@ public class AuthenticateOperation {
             userNode.put("email", (String) claims.get("email"));
             userNode.put("forename", (String) claims.get("forename"));
             userNode.put("surname", (String) claims.get("surname"));
-
-            if (claims.get("phone") != null) {
-                userNode.put("phone", (String) claims.get("phone"));
-            }
+            userNode.put("phone", (String) claims.get("phone"));
 
             dataNode.set("user", userNode);
             return new ServiceResult(dataNode);

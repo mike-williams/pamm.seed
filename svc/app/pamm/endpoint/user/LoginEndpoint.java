@@ -1,4 +1,4 @@
-package pamm.endpoint;
+package pamm.endpoint.user;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import pamm.domain.user.service.UserService;

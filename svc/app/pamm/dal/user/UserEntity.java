@@ -50,12 +50,6 @@ public class UserEntity implements Serializable {
     @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Column(name = "activated", nullable = false)
-    private Boolean activated;
-
-    @Column(name = "activation_key", nullable = false)
-    private String activationKey;
-
     @Column(name = "activation_date", nullable = false)
     private Date activationDate;
 
@@ -126,22 +120,6 @@ public class UserEntity implements Serializable {
         this.phone = phone;
     }
 
-    public Boolean getActivated() {
-        return activated;
-    }
-
-    public void setActivated(Boolean activated) {
-        this.activated = activated;
-    }
-
-    public String getActivationKey() {
-        return activationKey;
-    }
-
-    public void setActivationKey(String activationKey) {
-        this.activationKey = activationKey;
-    }
-
     public Date getActivationDate() {
         return activationDate;
     }
@@ -171,14 +149,12 @@ public class UserEntity implements Serializable {
                 Objects.equals(jobTitle, that.jobTitle) &&
                 Objects.equals(baseSite, that.baseSite) &&
                 Objects.equals(phone, that.phone) &&
-                Objects.equals(activated, that.activated) &&
-                Objects.equals(activationKey, that.activationKey) &&
                 Objects.equals(activationDate, that.activationDate) &&
                 Objects.equals(role, that.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, forename, surname, password, jobTitle, baseSite, phone, activated, activationKey, activationDate, role);
+        return Objects.hash(id, email, forename, surname, password, jobTitle, baseSite, phone, activationDate, role);
     }
 }

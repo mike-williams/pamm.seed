@@ -16,17 +16,17 @@ import play.Configuration;
 import javax.inject.Inject;
 import java.util.Date;
 
-public class UserBearerDbAuthenticator implements Authenticator {
+public class UserAuthenticator {
     private final Configuration configuration;
     private final Cipher cipher;
     private final RandomKeyGenerator randomKeyGenerator;
     private final UserRepository userRepository;
 
     @Inject
-    public UserBearerDbAuthenticator(Configuration configuration,
-                                     Cipher cipher,
-                                     RandomKeyGenerator randomKeyGenerator,
-                                     UserRepository userRepository) {
+    public UserAuthenticator(Configuration configuration,
+                             Cipher cipher,
+                             RandomKeyGenerator randomKeyGenerator,
+                             UserRepository userRepository) {
         this.configuration = configuration;
         this.cipher = cipher;
         this.randomKeyGenerator = randomKeyGenerator;
@@ -37,14 +37,18 @@ public class UserBearerDbAuthenticator implements Authenticator {
         return configuration.getString("play.crypto.secret");
     }
 
-    private String generateJwtTokenForUser(final User user) {
+    public String generateJwtTokenForUser(final User user) {
+        return generateJwtTokenForUser(user, 24);
+    }
+
+    public String generateJwtTokenForUser(final User user, final int validFor) {
         final Date issueDate = new Date();
 
         return Jwts.builder()
                 .setId(randomKeyGenerator.generate())
                 .setSubject(user.getId().toString())
                 .setIssuedAt(issueDate)
-                .setExpiration(DateUtils.addHours(issueDate, 1))
+                .setExpiration(DateUtils.addHours(issueDate, validFor))
                 .signWith(SignatureAlgorithm.HS256, TextCodec.BASE64.encode(getSecretKey()))
                 .claim("role", "user")
                 .claim("id", user.getId().toString())
@@ -55,7 +59,6 @@ public class UserBearerDbAuthenticator implements Authenticator {
                 .compact();
     }
 
-    @Override
     public Principal validateToken(final String token) {
         try {
             final Claims claims = Jwts.parser()
@@ -69,11 +72,10 @@ public class UserBearerDbAuthenticator implements Authenticator {
         }
     }
 
-    @Override
-    public Principal authenticate(final String username, final String plainPassword) {
+    public Principal authenticate(final String username, final String plaintextPassword) {
         final User user = userRepository.findUserByEmail(username);
-        if (user != null && user.isActivated()) {
-            if (cipher.verify(plainPassword, user.getPassword())) {
+        if (user != null && user.getActivationDate() != null) {
+            if (cipher.verify(plaintextPassword, user.getPassword())) {
                 return validateToken(generateJwtTokenForUser(user));
             }
         }
