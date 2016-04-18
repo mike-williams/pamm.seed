@@ -14,8 +14,7 @@ config = {
     },
 
     specs: [
-        "../setup/setup-login.feature",
-        "project.feature"
+        "../setup/setup-login.feature"
     ],
 
     onPrepare: function () {
